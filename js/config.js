@@ -22,7 +22,7 @@ const SITE_CONFIG = {
   googleReviewsUrl: "#",
   menuUrl: "menu.html",
 
-  openingHours: "24 Hours (verify before publishing)",
+  openingHours: "24 Hours (verify by calling)",
 
   instagramUrl: "#",
   facebookUrl: "#",
