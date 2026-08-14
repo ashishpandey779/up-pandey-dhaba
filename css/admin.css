@@ -445,3 +445,25 @@
     padding:8px 10px;
   }
 }
+
+.forgot-password-btn{
+  display:block;
+  width:100%;
+  margin-top:2px;
+  padding:8px;
+  border:0;
+  background:transparent;
+  color:var(--gold-light);
+  font:inherit;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.forgot-password-btn:hover{
+  text-decoration:underline;
+}
+
+.forgot-password-btn:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}

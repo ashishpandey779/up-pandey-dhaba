@@ -1,7 +1,8 @@
 import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
+  sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 
 import {
@@ -34,6 +35,9 @@ const loginForm =
 
 const loginMessage =
   document.getElementById("login-message");
+
+const forgotPasswordButton =
+  document.getElementById("forgot-password-btn");
 
 const adminMessage =
   document.getElementById("admin-message");
@@ -380,6 +384,101 @@ loginForm.addEventListener(
       );
 
     }
+  }
+);
+
+forgotPasswordButton.addEventListener(
+  "click",
+  async () => {
+
+    const email =
+      document
+        .getElementById("email")
+        .value
+        .trim();
+
+    if (!email) {
+
+      setLoginMessage(
+        "Enter your email address first.",
+        "error"
+      );
+
+      document
+        .getElementById("email")
+        .focus();
+
+      return;
+    }
+
+    forgotPasswordButton.disabled = true;
+
+    forgotPasswordButton.textContent =
+      "Sending reset email…";
+
+    try {
+
+      await sendPasswordResetEmail(
+        auth,
+        email
+      );
+
+      setLoginMessage(
+        "Password reset email sent. Check your inbox and spam folder.",
+        "info"
+      );
+
+    } catch (error) {
+
+      console.error(
+        "Password reset error:",
+        error
+      );
+
+      let message =
+        "Unable to send the reset email. Please check the email address and try again.";
+
+      if (
+        error.code ===
+        "auth/invalid-email"
+      ) {
+
+        message =
+          "Please enter a valid email address.";
+
+      } else if (
+        error.code ===
+        "auth/user-not-found"
+      ) {
+
+        message =
+          "No account was found with this email address.";
+
+      } else if (
+        error.code ===
+        "auth/too-many-requests"
+      ) {
+
+        message =
+          "Too many reset attempts. Please wait and try again later.";
+
+      }
+
+      setLoginMessage(
+        message,
+        "error"
+      );
+
+    } finally {
+
+      forgotPasswordButton.disabled =
+        false;
+
+      forgotPasswordButton.textContent =
+        "Forgot password?";
+
+    }
+
   }
 );
 
