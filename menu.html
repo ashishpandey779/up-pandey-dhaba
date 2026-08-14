@@ -1,10 +1,406 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Menu | UP Pandey Dhaba & Family Restaurant</title><meta name="description" content="UP Pandey Dhaba & Family Restaurant menu and prices. Pure vegetarian food."><meta name="theme-color" content="#120b07"><link rel="icon" type="image/png" href="assets/images/logo.png"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/menu.css"></head><body>
-<header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html"><img src="assets/images/logo.png" alt="UP Pandey Dhaba logo"><span>UP PANDEY DHABA</span></a><button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button><nav class="main-nav"><a href="index.html">Home</a><a href="index.html#about">About Us</a><a class="active" href="menu.html">Menu</a><a href="index.html#gallery">Gallery</a><a href="index.html#reviews">Reviews</a><a href="index.html#location">Location</a><a href="index.html#contact">Contact</a><a class="nav-call" data-phone-link href="#">☎ Call Now</a></nav></div></header>
-<main class="menu-page"><section class="menu-hero"><div class="container menu-hero-inner"><img class="menu-logo" src="assets/images/logo.png" alt="UP Pandey Dhaba & Family Restaurant"><p class="eyebrow">PURE VEG • PURE TASTE</p><h1>Our Menu</h1><p>Freshly prepared vegetarian favourites for every table.</p></div></section>
-<section class="menu-list section"><div class="container"><div class="menu-intro"><p class="eyebrow">VEGETARIAN SPECIALITIES</p><h2>From Our Kitchen</h2><p>Enjoy our selection of comforting Indian dishes, breads and refreshing drinks.</p></div>
-<div class="menu-category"><div class="category-heading"><div><span class="category-number">01</span><h2>Main Course</h2></div><span class="category-note">Pure Vegetarian</span></div><div class="price-list"><div class="menu-row"><span>Dal Fry</span><strong>₹100</strong></div><div class="menu-row"><span>Dal Tadka</span><strong>₹120</strong></div><div class="menu-row"><span>Bhindi Fry</span><strong>₹100</strong></div><div class="menu-row"><span>Sev Masala</span><strong>₹100</strong></div><div class="menu-row"><span>Sev Doodh</span><strong>₹120</strong></div><div class="menu-row"><span>Paneer Masala</span><strong>₹150</strong></div><div class="menu-row"><span>Channa Masala</span><strong>₹130</strong></div><div class="menu-row"><span>Matar Paneer</span><strong>₹150</strong></div></div></div>
-<div class="menu-category"><div class="category-heading"><div><span class="category-number">02</span><h2>Raita</h2></div><span class="category-note">Fresh & Cooling</span></div><div class="price-list"><div class="menu-row"><span>Raita — Full</span><strong>₹100</strong></div><div class="menu-row"><span>Raita — Half</span><strong>₹80</strong></div></div></div>
-<div class="menu-category"><div class="category-heading"><div><span class="category-number">03</span><h2>Roti</h2></div><span class="category-note">Freshly Made</span></div><div class="price-list"><div class="menu-row"><span>Roti (Fulka)</span><strong>₹10</strong></div><div class="menu-row"><span>Roti with Butter</span><strong>₹15</strong></div><div class="menu-row"><span>Roti with Ghee</span><strong>₹17</strong></div></div></div>
-<div class="menu-category"><div class="category-heading"><div><span class="category-number">04</span><h2>Drinks</h2></div><span class="category-note">Refreshing</span></div><div class="price-list"><div class="menu-row"><span>Milk — 200 ml</span><strong>₹30</strong></div><div class="menu-row"><span>Tea</span><strong>₹15</strong></div><div class="menu-row"><span>Buttermilk</span><strong>₹20</strong></div><div class="menu-row"><span>Lassi</span><strong>₹30</strong></div></div></div>
-<div class="menu-note"><span>🌿</span><div><strong>Pure Vegetarian</strong><p>Prices shown are based on the menu information provided. Confirm the final printed menu and prices before publishing.</p></div></div><div class="menu-actions"><a class="btn btn-primary" data-phone-link href="#">☎ Call Now</a><a class="btn btn-outline" href="index.html">← Back to Home</a></div></div></section></main>
-<footer class="site-footer"><div class="container footer-bottom"><p>© <span id="year"></span> UP Pandey Dhaba & Family Restaurant. All rights reserved.</p></div></footer><script src="js/config.js"></script><script>document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll("[data-phone-link]").forEach(el=>el.href=`tel:${SITE_CONFIG.phone}`);document.getElementById("year").textContent=new Date().getFullYear();const t=document.querySelector(".menu-toggle"),n=document.querySelector(".main-nav");t?.addEventListener("click",()=>{const o=n.classList.toggle("open");t.setAttribute("aria-expanded",String(o))});n?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");t?.setAttribute("aria-expanded","false")}))});</script></body></html>
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
+
+<title>Menu | UP Pandey Dhaba & Family Restaurant</title>
+
+<meta
+  name="description"
+  content="UP Pandey Dhaba & Family Restaurant menu and prices. Pure vegetarian food."
+>
+
+<meta
+  name="theme-color"
+  content="#120b07"
+>
+
+<link
+  rel="icon"
+  type="image/png"
+  href="assets/images/logo.png"
+>
+
+<link
+  rel="stylesheet"
+  href="css/style.css"
+>
+
+<link
+  rel="stylesheet"
+  href="css/menu.css"
+>
+
+</head>
+
+
+<body>
+
+<header class="site-header">
+
+  <div class="container nav-wrap">
+
+    <a
+      class="brand"
+      href="index.html"
+    >
+
+      <img
+        src="assets/images/logo.png"
+        alt="UP Pandey Dhaba logo"
+      >
+
+      <span>
+        UP PANDEY DHABA
+      </span>
+
+    </a>
+
+
+    <button
+      class="menu-toggle"
+      aria-label="Open navigation"
+      aria-expanded="false"
+    >
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+    <nav class="main-nav">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="index.html#about">
+        About Us
+      </a>
+
+      <a
+        class="active"
+        href="menu.html"
+      >
+        Menu
+      </a>
+
+      <a href="index.html#gallery">
+        Gallery
+      </a>
+
+      <a href="index.html#reviews">
+        Reviews
+      </a>
+
+      <a href="index.html#location">
+        Location
+      </a>
+
+      <a href="index.html#contact">
+        Contact
+      </a>
+
+      <a
+        class="nav-call"
+        data-phone-link
+        href="#"
+      >
+        ☎ Call Now
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<main class="menu-page">
+
+
+  <!-- MENU HERO -->
+
+  <section class="menu-hero">
+
+    <div class="container menu-hero-inner">
+
+      <img
+        class="menu-logo"
+        src="assets/images/logo.png"
+        alt="UP Pandey Dhaba & Family Restaurant"
+      >
+
+      <p class="eyebrow">
+        PURE VEG • PURE TASTE
+      </p>
+
+      <h1>
+        Our Menu
+      </h1>
+
+      <p>
+        Freshly prepared vegetarian favourites for every table.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- MENU -->
+
+  <section class="menu-list section">
+
+    <div class="container">
+
+
+      <div class="menu-intro">
+
+        <p class="eyebrow">
+          VEGETARIAN SPECIALITIES
+        </p>
+
+        <h2>
+          From Our Kitchen
+        </h2>
+
+        <p>
+          Enjoy our selection of comforting Indian dishes,
+          breads and refreshing drinks.
+        </p>
+
+      </div>
+
+
+      <!--
+        Firebase will load the complete menu here.
+
+        Do not put the individual menu items here.
+        They are now controlled from the private
+        restaurant management panel.
+      -->
+
+      <div
+        id="live-menu"
+        aria-live="polite"
+      >
+
+        <div class="menu-loading">
+
+          <span class="menu-loading-icon">
+            🌿
+          </span>
+
+          <strong>
+            Loading Menu
+          </strong>
+
+          <span>
+            Please wait while we load today's menu.
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- MENU NOTE -->
+
+      <div class="menu-note">
+
+        <span>
+          🌿
+        </span>
+
+        <div>
+
+          <strong>
+            Pure Vegetarian
+          </strong>
+
+          <p>
+            All items listed on this page are
+            vegetarian. Availability may change
+            during the day.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- ACTIONS -->
+
+      <div class="menu-actions">
+
+        <a
+          class="btn btn-primary"
+          data-phone-link
+          href="#"
+        >
+          ☎ Call Now
+        </a>
+
+        <a
+          class="btn btn-outline"
+          href="index.html"
+        >
+          ← Back to Home
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="container footer-bottom">
+
+    <p>
+      ©
+      <span id="year"></span>
+      UP Pandey Dhaba & Family Restaurant.
+      All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<!-- Existing site configuration -->
+
+<script src="js/config.js"></script>
+
+
+<!-- Existing navigation / phone functionality -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /*
+   * Phone links
+   */
+
+  document
+    .querySelectorAll("[data-phone-link]")
+    .forEach(el => {
+
+      if (
+        typeof SITE_CONFIG !== "undefined" &&
+        SITE_CONFIG.phone
+      ) {
+
+        el.href =
+          `tel:${SITE_CONFIG.phone}`;
+
+      }
+
+    });
+
+
+  /*
+   * Footer year
+   */
+
+  const year =
+    document.getElementById("year");
+
+  if (year) {
+
+    year.textContent =
+      new Date().getFullYear();
+
+  }
+
+
+  /*
+   * Mobile navigation
+   */
+
+  const toggle =
+    document.querySelector(".menu-toggle");
+
+  const nav =
+    document.querySelector(".main-nav");
+
+
+  toggle?.addEventListener(
+    "click",
+    () => {
+
+      const open =
+        nav.classList.toggle("open");
+
+      toggle.setAttribute(
+        "aria-expanded",
+        String(open)
+      );
+
+    }
+  );
+
+
+  /*
+   * Close mobile navigation
+   * after selecting a link.
+   */
+
+  nav
+    ?.querySelectorAll("a")
+    .forEach(a => {
+
+      a.addEventListener(
+        "click",
+        () => {
+
+          nav.classList.remove("open");
+
+          toggle?.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        }
+      );
+
+    });
+
+});
+
+</script>
+
+
+<!--
+  Firebase live menu.
+
+  This loads the menu from Firestore and
+  automatically reflects ON/OFF availability.
+-->
+
+<script
+  type="module"
+  src="js/menu-page.js"
+></script>
+
+
+</body>
+
+</html>

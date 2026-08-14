@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
+
+<meta
+  name="robots"
+  content="noindex,nofollow,noarchive"
+>
+
+<title>Management | UP Pandey Dhaba</title>
+
+<link
+  rel="icon"
+  type="image/png"
+  href="assets/images/logo.png"
+>
+
+<link
+  rel="stylesheet"
+  href="css/style.css"
+>
+
+<link
+  rel="stylesheet"
+  href="css/admin.css"
+>
+
+</head>
+
+<body class="admin-body">
+
+<main class="admin-shell">
+
+<section
+  id="login-panel"
+  class="admin-card login-card"
+>
+
+<img
+  src="assets/images/logo.png"
+  class="admin-logo"
+  alt="UP Pandey Dhaba"
+>
+
+<p class="eyebrow">
+  PRIVATE ACCESS
+</p>
+
+<h1>
+  Restaurant Management
+</h1>
+
+<p class="admin-muted">
+  Sign in with an authorized restaurant account.
+</p>
+
+<form
+  id="login-form"
+  class="admin-form"
+>
+
+<label>
+  Email
+
+  <input
+    id="email"
+    type="email"
+    autocomplete="username"
+    required
+  >
+
+</label>
+
+<label>
+  Password
+
+  <input
+    id="password"
+    type="password"
+    autocomplete="current-password"
+    required
+  >
+
+</label>
+
+<button
+  class="btn btn-primary"
+  type="submit"
+>
+  Sign In
+</button>
+
+<p
+  id="login-message"
+  class="form-message"
+  aria-live="polite"
+></p>
+
+</form>
+
+<a
+  class="back-link"
+  href="index.html"
+>
+  ← Back to website
+</a>
+
+</section>
+
+
+<section
+  id="dashboard"
+  class="admin-dashboard"
+  hidden
+>
+
+<header class="admin-topbar">
+
+<div class="admin-brand">
+
+<img
+  src="assets/images/logo.png"
+  alt=""
+>
+
+<div>
+
+<strong>
+  UP PANDEY DHABA
+</strong>
+
+<span>
+  Management
+</span>
+
+</div>
+
+</div>
+
+
+<div class="admin-user">
+
+<span id="user-email"></span>
+
+<span
+  id="user-role"
+  class="role-pill"
+></span>
+
+<button
+  id="logout-btn"
+  class="btn btn-outline"
+>
+  Logout
+</button>
+
+</div>
+
+</header>
+
+
+<div class="admin-content container">
+
+<div class="admin-heading">
+
+<div>
+
+<p class="eyebrow">
+  LIVE MENU CONTROL
+</p>
+
+<h1>
+  Menu Availability
+</h1>
+
+<p>
+  Turn an item OFF when it is currently unavailable.
+  Customers will see the status immediately.
+</p>
+
+</div>
+
+
+<button
+  id="seed-btn"
+  class="btn btn-primary"
+  type="button"
+>
+  Initialize Menu
+</button>
+
+</div>
+
+
+<div
+  id="admin-message"
+  class="admin-alert"
+  hidden
+></div>
+
+
+<div
+  id="admin-menu"
+  class="admin-menu-list"
+></div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<script
+  type="module"
+  src="js/admin.js"
+></script>
+
+</body>
+
+</html>
