@@ -178,3 +178,17 @@ h1 strong { display: block; color: var(--gold); }
   .review-box, .contact-box { flex-direction:column; align-items:stretch; padding:28px; }
   .map-card, .map-placeholder { min-height:300px; }
 }
+
+.btn-google-review{
+  border:1px solid rgba(245,173,32,.45);
+  background:rgba(245,173,32,.08);
+  color:var(--gold-light);
+  width:100%;
+  justify-content:center;
+}
+
+.btn-google-review:hover{
+  background:rgba(245,173,32,.16);
+  border-color:var(--gold);
+  transform:translateY(-2px);
+}
