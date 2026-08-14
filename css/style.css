@@ -473,62 +473,70 @@ h1 strong { display: block; color: var(--gold); }
   }
 
 
-  .google-review-stars{
+  @media(max-width:600px){
 
-    font-size:20px;
+  .google-review-card{
+    width:100%;
+    min-height:135px;
 
-    letter-spacing:1px;
+    margin-top:8px;
+    padding:20px 16px;
 
-    writing-mode:vertical-rl;
+    border-width:2px;
+    border-radius:18px;
 
-    text-orientation:mixed;
+    display:grid;
 
-    transform:none;
+    grid-template-columns:1fr auto;
+    grid-template-rows:auto auto;
 
+    align-items:center;
+    gap:8px 12px;
   }
 
+  .google-review-stars{
+    grid-column:1 / -1;
+    grid-row:1;
+
+    justify-self:center;
+
+    font-size:24px;
+    line-height:1;
+
+    letter-spacing:2px;
+
+    white-space:nowrap;
+
+    writing-mode:horizontal-tb;
+    text-orientation:mixed;
+  }
 
   .google-review-content{
+    grid-column:1;
+    grid-row:2;
 
-    gap:6px;
-
+    gap:5px;
   }
-
 
   .google-review-content strong{
-
-    font-size:12px;
-
+    font-size:11px;
     letter-spacing:1px;
-
     line-height:1.35;
-
   }
-
 
   .google-review-content span{
-
-    font-size:18px;
-
+    font-size:17px;
     line-height:1.2;
-
   }
 
-
   .google-review-arrow{
+    grid-column:2;
+    grid-row:2;
 
     width:38px;
     height:38px;
 
     font-size:19px;
-
-  }
-
-
-  .google-review-card:hover{
-
-    transform:none;
-
   }
 
 }
