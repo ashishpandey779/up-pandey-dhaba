@@ -192,107 +192,135 @@ h1 strong { display: block; color: var(--gold); }
   border-color:var(--gold);
   transform:translateY(-2px);
 }
-
-/* ================================
+/* =========================================
    GOOGLE REVIEW CARD
-   ================================ */
+   ========================================= */
 
 .google-review-card{
   position:relative;
 
   width:100%;
-  min-height:105px;
+  min-height:112px;
 
   display:flex;
   align-items:center;
+  justify-content:center;
   gap:18px;
 
-  padding:18px 22px;
+  margin-top:4px;
+  padding:20px 24px;
 
-  border:1px solid rgba(245,173,32,.45);
-  border-radius:18px;
+  border:2px solid rgba(245,173,32,.55);
+  border-radius:20px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(245,173,32,.16),
-      rgba(245,173,32,.045)
+      rgba(245,173,32,.18),
+      rgba(245,173,32,.055)
     );
 
-  box-shadow:
-    0 12px 35px rgba(0,0,0,.22),
-    inset 0 1px 0 rgba(255,255,255,.04);
-
   color:var(--cream);
-
   text-decoration:none;
 
   overflow:hidden;
 
+  box-shadow:
+    0 0 0 rgba(245,173,32,0),
+    0 12px 35px rgba(0,0,0,.25);
+
+  animation:
+    reviewGlow 3.2s ease-in-out infinite;
+
   transition:
     transform .25s ease,
     border-color .25s ease,
-    box-shadow .25s ease,
-    background .25s ease;
+    box-shadow .25s ease;
 }
 
 
-/* subtle shine */
+/* =========================================
+   MOVING SHINE
+   ========================================= */
 
 .google-review-card::before{
   content:"";
 
   position:absolute;
 
-  top:0;
-  left:-120%;
+  top:-20%;
+  left:-80%;
 
-  width:70%;
-  height:100%;
+  width:45%;
+  height:140%;
 
   background:
     linear-gradient(
       90deg,
       transparent,
-      rgba(255,255,255,.08),
+      rgba(255,255,255,.28),
       transparent
     );
 
   transform:skewX(-20deg);
 
-  transition:left .7s ease;
+  animation:
+    reviewShine 4s ease-in-out infinite;
+
+  pointer-events:none;
 }
 
 
-.google-review-card:hover::before{
-  left:140%;
+/* =========================================
+   GLOW
+   ========================================= */
+
+@keyframes reviewGlow{
+
+  0%,
+  100%{
+    box-shadow:
+      0 0 0 rgba(245,173,32,0),
+      0 12px 35px rgba(0,0,0,.25);
+  }
+
+  50%{
+    box-shadow:
+      0 0 24px rgba(245,173,32,.22),
+      0 14px 40px rgba(0,0,0,.3);
+  }
+
 }
 
 
-.google-review-card:hover{
-  transform:translateY(-4px);
+@keyframes reviewShine{
 
-  border-color:var(--gold);
+  0%{
+    left:-80%;
+  }
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(245,173,32,.22),
-      rgba(245,173,32,.07)
-    );
+  20%{
+    left:130%;
+  }
 
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.3),
-    0 0 25px rgba(245,173,32,.08);
+  100%{
+    left:130%;
+  }
+
 }
 
 
-/* Stars */
+/* =========================================
+   STARS
+   ========================================= */
 
 .google-review-stars{
+  position:relative;
+  z-index:2;
+
   flex:0 0 auto;
 
-  font-size:25px;
+  font-size:28px;
   line-height:1;
 
   letter-spacing:2px;
@@ -300,13 +328,36 @@ h1 strong { display: block; color: var(--gold); }
   color:#ffc107;
 
   text-shadow:
-    0 2px 8px rgba(255,193,7,.25);
+    0 0 8px rgba(255,193,7,.35),
+    0 2px 10px rgba(0,0,0,.25);
+
+  animation:
+    starPulse 2.4s ease-in-out infinite;
 }
 
 
-/* Text */
+@keyframes starPulse{
+
+  0%,
+  100%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.06);
+  }
+
+}
+
+
+/* =========================================
+   CONTENT
+   ========================================= */
 
 .google-review-content{
+  position:relative;
+  z-index:2;
+
   flex:1;
 
   display:flex;
@@ -323,26 +374,31 @@ h1 strong { display: block; color: var(--gold); }
 
   font-size:14px;
 
-  letter-spacing:1.3px;
+  letter-spacing:1.5px;
 }
 
 
 .google-review-content span{
   color:var(--gold-light);
 
-  font-size:18px;
+  font-size:19px;
 
   font-weight:800;
 }
 
 
-/* Arrow */
+/* =========================================
+   ARROW
+   ========================================= */
 
 .google-review-arrow{
+  position:relative;
+  z-index:2;
+
   flex:0 0 auto;
 
-  width:38px;
-  height:38px;
+  width:40px;
+  height:40px;
 
   display:flex;
   align-items:center;
@@ -350,13 +406,15 @@ h1 strong { display: block; color: var(--gold); }
 
   border-radius:50%;
 
-  background:rgba(245,173,32,.12);
+  background:
+    rgba(245,173,32,.14);
 
-  border:1px solid rgba(245,173,32,.25);
+  border:
+    1px solid rgba(245,173,32,.35);
 
   color:var(--gold-light);
 
-  font-size:20px;
+  font-size:21px;
 
   transition:
     transform .25s ease,
@@ -364,47 +422,113 @@ h1 strong { display: block; color: var(--gold); }
 }
 
 
-.google-review-card:hover
-.google-review-arrow{
-  transform:translateX(4px);
+.google-review-card:hover{
+  transform:translateY(-4px);
 
-  background:rgba(245,173,32,.22);
+  border-color:var(--gold);
+
+  box-shadow:
+    0 0 30px rgba(245,173,32,.25),
+    0 18px 45px rgba(0,0,0,.35);
 }
 
 
-/* Mobile */
+.google-review-card:hover
+.google-review-arrow{
+  transform:translateX(5px);
+
+  background:
+    rgba(245,173,32,.25);
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
 
 @media(max-width:600px){
 
   .google-review-card{
-    min-height:96px;
 
-    padding:16px;
+    width:100%;
 
-    gap:13px;
+    min-height:125px;
 
-    border-radius:16px;
+    margin-top:8px;
+
+    padding:20px 16px;
+
+    border-width:2px;
+
+    border-radius:18px;
+
+    display:grid;
+
+    grid-template-columns:auto 1fr auto;
+
+    align-items:center;
+
+    gap:12px;
+
   }
+
 
   .google-review-stars{
-    font-size:19px;
+
+    font-size:20px;
+
     letter-spacing:1px;
+
+    writing-mode:vertical-rl;
+
+    text-orientation:mixed;
+
+    transform:none;
+
   }
+
+
+  .google-review-content{
+
+    gap:6px;
+
+  }
+
 
   .google-review-content strong{
-    font-size:11px;
+
+    font-size:12px;
+
     letter-spacing:1px;
+
+    line-height:1.35;
+
   }
+
 
   .google-review-content span{
-    font-size:16px;
+
+    font-size:18px;
+
+    line-height:1.2;
+
   }
 
+
   .google-review-arrow{
+
     width:38px;
     height:38px;
 
-    font-size:18px;
+    font-size:19px;
+
+  }
+
+
+  .google-review-card:hover{
+
+    transform:none;
+
   }
 
 }
