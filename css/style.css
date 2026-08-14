@@ -648,3 +648,14 @@ h1 strong { display: block; color: var(--gold); }
   }
 
 }
+/* Planning a Visit buttons spacing */
+
+.visit-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.visit-actions .btn{
+  margin:0;
+}
