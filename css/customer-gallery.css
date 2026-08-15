@@ -1,13 +1,14 @@
 /* =========================================================
-   CUSTOMER GALLERY
+   CUSTOMER GALLERY PAGE
    ========================================================= */
 
-.customer-gallery-page {
-  min-height: 100vh;
+.customer-gallery-page{
+  min-height:100vh;
+
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(245, 173, 32, .10),
+      rgba(245,173,32,.10),
       transparent 35%
     ),
     var(--bg);
@@ -18,451 +19,314 @@
    HERO
    ========================================================= */
 
-.customer-gallery-hero {
-  padding: 70px 0 65px;
-  text-align: center;
-  border-bottom: 1px solid var(--line);
+.customer-gallery-hero{
+  padding:70px 0 65px;
+
+  text-align:center;
+
+  border-bottom:
+    1px solid var(--line);
 
   background:
     linear-gradient(
-      rgba(11, 7, 5, .88),
-      rgba(11, 7, 5, .96)
+      rgba(11,7,5,.88),
+      rgba(11,7,5,.96)
     ),
     url("../assets/images/hero.jpg")
-    center / cover;
+    center/cover;
 }
 
-.customer-gallery-hero-inner {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+
+.customer-gallery-hero-inner{
+  display:flex;
+
+  align-items:center;
+
+  flex-direction:column;
 }
 
-.customer-gallery-logo {
-  width: min(180px, 45vw);
-  margin-bottom: 18px;
+
+.customer-gallery-logo{
+  width:min(180px,45vw);
+
+  margin-bottom:18px;
 
   filter:
     drop-shadow(
-      0 12px 25px rgba(0, 0, 0, .5)
+      0 12px 25px rgba(0,0,0,.5)
     );
 }
 
-.customer-gallery-hero h1 {
-  margin: 0;
 
-  color: var(--cream);
+.customer-gallery-hero h1{
+  margin:0;
+
+  color:var(--cream);
 
   font-size:
-    clamp(42px, 7vw, 76px);
+    clamp(44px,7vw,76px);
 }
 
-.customer-gallery-hero p:last-child {
-  max-width: 650px;
-  margin: 15px auto 0;
 
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.7;
+.customer-gallery-hero p:last-child{
+  max-width:680px;
+
+  margin:15px auto 0;
+
+  color:var(--muted);
+
+  font-size:17px;
+
+  line-height:1.7;
 }
 
 
 /* =========================================================
-   SECTION HEADINGS
+   GALLERY BROWSER
    ========================================================= */
 
-.section-heading {
-  max-width: 720px;
-  margin: 0 auto 42px;
+.gallery-browser-section{
+  padding-top:70px;
 
-  text-align: center;
+  padding-bottom:90px;
 }
 
-.section-heading h2 {
-  margin: 0 0 12px;
 
-  font-size:
-    clamp(32px, 5vw, 50px);
-}
+.gallery-tabs-wrap{
+  width:min(1100px,100%);
 
-.section-heading p:last-child {
-  margin: 0;
-
-  color: var(--muted);
-  line-height: 1.7;
+  margin:0 auto;
 }
 
 
 /* =========================================================
-   UPLOAD SECTION
+   TABS
    ========================================================= */
 
-.customer-upload-section {
-  padding-top: 80px;
-  padding-bottom: 35px;
+.gallery-tabs{
+  display:flex;
+
+  justify-content:center;
+
+  gap:8px;
+
+  padding:7px;
+
+  margin-bottom:22px;
+
+  border:
+    1px solid rgba(245,173,32,.20);
+
+  border-radius:16px;
+
+  background:
+    rgba(15,9,5,.9);
 }
 
-.customer-upload-card {
-  width: min(920px, 100%);
-  margin: 0 auto;
 
-  display: flex;
-  align-items: center;
-  gap: 30px;
+.gallery-tab{
+  flex:1;
 
-  padding: 34px;
+  min-height:52px;
 
-  border: 1px solid var(--line);
-  border-radius: 24px;
+  padding:12px 20px;
+
+  border:0;
+
+  border-radius:11px;
+
+  background:transparent;
+
+  color:var(--muted);
+
+  font:inherit;
+
+  font-weight:800;
+
+  cursor:pointer;
+
+  transition:
+    background .2s ease,
+    color .2s ease,
+    transform .2s ease;
+}
+
+
+.gallery-tab:hover{
+  color:var(--gold-light);
+
+  background:
+    rgba(245,173,32,.06);
+}
+
+
+.gallery-tab.active{
+  color:#160d05;
+
+  background:var(--gold);
+
+  box-shadow:
+    0 7px 22px rgba(245,173,32,.18);
+}
+
+
+/* =========================================================
+   UPLOAD CTA
+   ========================================================= */
+
+.gallery-upload-cta{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:25px;
+
+  padding:20px 23px;
+
+  margin-bottom:42px;
+
+  border:
+    1px solid rgba(245,173,32,.30);
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(245,173,32,.10),
+      rgba(245,173,32,.035)
+    );
+
+  box-shadow:
+    0 14px 40px rgba(0,0,0,.16);
+}
+
+
+.gallery-upload-cta strong{
+  display:block;
+
+  margin-bottom:5px;
+
+  color:var(--cream);
+
+  font-family:
+    "Roboto Slab",
+    serif;
+
+  font-size:19px;
+}
+
+
+.gallery-upload-cta span{
+  display:block;
+
+  color:var(--muted);
+
+  font-size:13px;
+
+  line-height:1.5;
+}
+
+
+.gallery-upload-cta .btn{
+  flex:0 0 auto;
+}
+
+
+/* =========================================================
+   GALLERY PANEL
+   ========================================================= */
+
+.gallery-panel{
+  width:100%;
+}
+
+
+.gallery-panel-heading{
+  max-width:760px;
+
+  margin:0 auto 38px;
+
+  text-align:center;
+}
+
+
+.gallery-panel-heading h2{
+  margin:0 0 12px;
+
+  font-size:
+    clamp(31px,5vw,48px);
+}
+
+
+.gallery-panel-heading p:last-child{
+  margin:0;
+
+  color:var(--muted);
+
+  line-height:1.7;
+}
+
+
+/* =========================================================
+   RESTAURANT GALLERY
+   ========================================================= */
+
+.restaurant-gallery-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+  gap:20px;
+}
+
+
+.restaurant-photo-placeholder{
+  min-height:300px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  flex-direction:column;
+
+  gap:14px;
+
+  border:
+    1px dashed rgba(245,173,32,.30);
+
+  border-radius:20px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(33, 18, 10, .96),
-      rgba(15, 9, 5, .98)
-    );
-
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, .22);
-}
-
-.customer-upload-icon {
-  width: 90px;
-  height: 90px;
-
-  flex: 0 0 90px;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: 22px;
-
-  border:
-    1px solid rgba(245, 173, 32, .35);
-
-  background:
-    rgba(245, 173, 32, .08);
-
-  font-size: 42px;
-
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, .22);
-}
-
-.customer-upload-content {
-  flex: 1;
-}
-
-.customer-upload-content h2 {
-  margin: 0 0 8px;
-
-  color: var(--gold-light);
-
-  font-size:
-    clamp(26px, 4vw, 36px);
-}
-
-.customer-upload-content > p {
-  margin: 0 0 18px;
-
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.customer-upload-points {
-  display: grid;
-  gap: 8px;
-
-  margin-bottom: 24px;
-
-  color: var(--cream);
-  font-size: 14px;
-}
-
-.customer-upload-points div::first-letter {
-  color: var(--gold);
-}
-
-.customer-upload-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-/* =========================================================
-   FORM SECTION
-   ========================================================= */
-
-.customer-form-section {
-  padding-top: 45px;
-  padding-bottom: 75px;
-}
-
-.customer-form-card {
-  width: min(760px, 100%);
-  margin: 0 auto;
-
-  padding: 38px;
-
-  border:
-    1px solid rgba(245, 173, 32, .20);
-
-  border-radius: 24px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #1c1008,
+      #1a0f08,
       #0e0805
     );
 
-  box-shadow:
-    0 24px 70px rgba(0, 0, 0, .28);
-}
+  color:var(--gold);
 
-.customer-form-heading {
-  margin-bottom: 30px;
-}
+  font-size:42px;
 
-.customer-form-heading h2 {
-  margin: 0 0 10px;
-
-  color: var(--cream);
-
-  font-size:
-    clamp(30px, 5vw, 44px);
-}
-
-.customer-form-heading p:last-child {
-  margin: 0;
-
-  color: var(--muted);
-  line-height: 1.6;
+  text-align:center;
 }
 
 
-/* =========================================================
-   FORM
-   ========================================================= */
+.restaurant-photo-placeholder span{
+  color:var(--muted);
 
-.customer-photo-form {
-  display: grid;
-  gap: 23px;
-}
+  font-size:14px;
 
-.customer-form-group {
-  display: grid;
-  gap: 8px;
-}
+  font-weight:700;
 
-.customer-form-group label {
-  color: var(--cream);
+  text-transform:uppercase;
 
-  font-weight: 700;
-  font-size: 15px;
-}
-
-.customer-form-group label span {
-  color: #ff9d72;
-}
-
-.customer-form-group input[type="text"],
-.customer-form-group input[type="email"],
-.customer-form-group textarea {
-  width: 100%;
-
-  box-sizing: border-box;
-
-  border:
-    1px solid rgba(245, 173, 32, .24);
-
-  border-radius: 12px;
-
-  background: #0b0705;
-
-  color: var(--cream);
-
-  padding: 13px 14px;
-
-  font: inherit;
-
-  outline: none;
-
-  transition:
-    border-color .2s ease,
-    box-shadow .2s ease;
-}
-
-.customer-form-group textarea {
-  resize: vertical;
-  min-height: 125px;
-}
-
-.customer-form-group input:focus,
-.customer-form-group textarea:focus {
-  border-color: var(--gold);
-
-  box-shadow:
-    0 0 0 3px
-    rgba(245, 173, 32, .08);
-}
-
-.customer-form-group input[type="file"] {
-  width: 100%;
-
-  box-sizing: border-box;
-
-  padding: 13px;
-
-  border:
-    1px dashed rgba(245, 173, 32, .38);
-
-  border-radius: 12px;
-
-  background:
-    rgba(245, 173, 32, .045);
-
-  color: var(--muted);
-
-  cursor: pointer;
-}
-
-.customer-form-group input[type="file"]::file-selector-button {
-  margin-right: 12px;
-
-  padding: 9px 14px;
-
-  border: 0;
-  border-radius: 8px;
-
-  background: var(--gold);
-
-  color: #160d05;
-
-  font-weight: 800;
-
-  cursor: pointer;
-}
-
-.customer-form-group small {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-
-/* =========================================================
-   PHOTO PREVIEW
-   ========================================================= */
-
-.photo-preview {
-  margin-top: 8px;
-
-  overflow: hidden;
-
-  border:
-    1px solid rgba(245, 173, 32, .20);
-
-  border-radius: 16px;
-
-  background: #080504;
-}
-
-.photo-preview img {
-  display: block;
-
-  width: 100%;
-  max-height: 420px;
-
-  object-fit: contain;
-}
-
-
-/* =========================================================
-   CONSENT
-   ========================================================= */
-
-.customer-consent {
-  padding: 16px;
-
-  border:
-    1px solid rgba(245, 173, 32, .16);
-
-  border-radius: 13px;
-
-  background:
-    rgba(245, 173, 32, .045);
-}
-
-.customer-consent label {
-  display: flex;
-  align-items: flex-start;
-  gap: 11px;
-
-  color: var(--muted);
-
-  font-size: 13px;
-  line-height: 1.6;
-
-  cursor: pointer;
-}
-
-.customer-consent input {
-  width: 18px;
-  height: 18px;
-
-  flex: 0 0 auto;
-
-  margin-top: 2px;
-
-  accent-color: var(--gold);
-}
-
-
-/* =========================================================
-   FORM MESSAGE
-   ========================================================= */
-
-.customer-form-message {
-  min-height: 22px;
-
-  margin: 0;
-
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.customer-form-message.success {
-  color: #a9d97c;
-}
-
-.customer-form-message.error {
-  color: #ff9b8d;
-}
-
-.customer-form-message.info {
-  color: var(--gold-light);
-}
-
-
-/* =========================================================
-   SUBMIT BUTTON
-   ========================================================= */
-
-.customer-submit-button {
-  width: 100%;
-
-  min-height: 52px;
-
-  margin-top: 2px;
-
-  font-size: 16px;
-}
-
-.customer-submit-button:disabled {
-  opacity: .55;
-  cursor: not-allowed;
+  letter-spacing:.7px;
 }
 
 
@@ -470,27 +334,23 @@
    CUSTOMER PHOTO GRID
    ========================================================= */
 
-.customer-photos-section {
-  padding-top: 65px;
-  padding-bottom: 90px;
-}
-
-.customer-photo-grid {
-  display: grid;
+.customer-photo-grid{
+  display:grid;
 
   grid-template-columns:
-    repeat(3, minmax(0, 1fr));
+    repeat(3,minmax(0,1fr));
 
-  gap: 20px;
+  gap:20px;
 }
 
-.customer-photo-card {
-  overflow: hidden;
+
+.customer-photo-card{
+  overflow:hidden;
 
   border:
     1px solid var(--line);
 
-  border-radius: 18px;
+  border-radius:18px;
 
   background:
     linear-gradient(
@@ -500,78 +360,403 @@
     );
 
   box-shadow:
-    0 14px 35px rgba(0, 0, 0, .18);
+    0 14px 35px rgba(0,0,0,.18);
 
   transition:
     transform .25s ease,
     box-shadow .25s ease;
 }
 
-.customer-photo-card:hover {
-  transform: translateY(-4px);
+
+.customer-photo-card:hover{
+  transform:translateY(-4px);
 
   box-shadow:
-    0 20px 45px rgba(0, 0, 0, .28);
+    0 20px 45px rgba(0,0,0,.28);
 }
 
-.customer-photo-card-image {
-  width: 100%;
 
-  aspect-ratio: 1 / 1;
+.customer-photo-card-image{
+  width:100%;
 
-  object-fit: cover;
+  aspect-ratio:1 / 1;
 
-  display: block;
+  object-fit:cover;
 
-  background: #080504;
+  display:block;
+
+  background:#080504;
+
+  transition:
+    transform .35s ease;
 }
 
-.customer-photo-card-content {
-  padding: 16px;
+
+.customer-photo-card:hover
+.customer-photo-card-image{
+  transform:scale(1.025);
 }
 
-.customer-photo-card-comment {
-  margin: 0 0 9px;
 
-  color: var(--cream);
-
-  font-size: 14px;
-  line-height: 1.6;
+.customer-photo-card-content{
+  padding:16px;
 }
 
-.customer-photo-card-instagram {
-  color: var(--gold-light);
 
-  font-size: 13px;
-  font-weight: 700;
+.customer-photo-card-comment{
+  margin:0 0 9px;
+
+  color:var(--cream);
+
+  font-size:14px;
+
+  line-height:1.6;
 }
+
+
+.customer-photo-card-instagram{
+  color:var(--gold-light);
+
+  font-size:13px;
+
+  font-weight:700;
+}
+
 
 .customer-photo-loading,
-.customer-photo-empty {
-  grid-column: 1 / -1;
+.customer-photo-empty{
+  grid-column:1 / -1;
 
-  padding: 42px 20px;
+  padding:55px 20px;
 
-  text-align: center;
+  text-align:center;
 
   border:
     1px dashed var(--line);
 
-  border-radius: 18px;
+  border-radius:18px;
 
-  color: var(--muted);
+  color:var(--muted);
 }
 
-.customer-photo-empty strong {
-  display: block;
 
-  margin-bottom: 6px;
+.customer-photo-empty strong{
+  display:block;
 
-  color: var(--cream);
+  margin-bottom:7px;
+
+  color:var(--cream);
 
   font-family:
     "Roboto Slab",
     serif;
+
+  font-size:18px;
+}
+
+
+/* =========================================================
+   UPLOAD FORM
+   ========================================================= */
+
+.customer-form-section{
+  padding-top:20px;
+
+  padding-bottom:90px;
+}
+
+
+.customer-form-card{
+  width:min(760px,100%);
+
+  margin:0 auto;
+
+  padding:38px;
+
+  border:
+    1px solid rgba(245,173,32,.20);
+
+  border-radius:24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1c1008,
+      #0e0805
+    );
+
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.28);
+}
+
+
+.customer-form-heading{
+  margin-bottom:30px;
+}
+
+
+.customer-form-heading h2{
+  margin:0 0 10px;
+
+  color:var(--cream);
+
+  font-size:
+    clamp(30px,5vw,44px);
+}
+
+
+.customer-form-heading p:last-child{
+  margin:0;
+
+  color:var(--muted);
+
+  line-height:1.6;
+}
+
+
+.customer-photo-form{
+  display:grid;
+
+  gap:23px;
+}
+
+
+.customer-form-group{
+  display:grid;
+
+  gap:8px;
+}
+
+
+.customer-form-group label{
+  color:var(--cream);
+
+  font-weight:700;
+
+  font-size:15px;
+}
+
+
+.customer-form-group label span{
+  color:#ff9d72;
+}
+
+
+.customer-form-group input[type="text"],
+.customer-form-group textarea{
+  width:100%;
+
+  box-sizing:border-box;
+
+  border:
+    1px solid rgba(245,173,32,.24);
+
+  border-radius:12px;
+
+  background:#0b0705;
+
+  color:var(--cream);
+
+  padding:13px 14px;
+
+  font:inherit;
+
+  outline:none;
+}
+
+
+.customer-form-group textarea{
+  resize:vertical;
+
+  min-height:125px;
+}
+
+
+.customer-form-group input:focus,
+.customer-form-group textarea:focus{
+  border-color:var(--gold);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(245,173,32,.08);
+}
+
+
+.customer-form-group input[type="file"]{
+  width:100%;
+
+  box-sizing:border-box;
+
+  padding:13px;
+
+  border:
+    1px dashed rgba(245,173,32,.38);
+
+  border-radius:12px;
+
+  background:
+    rgba(245,173,32,.045);
+
+  color:var(--muted);
+
+  cursor:pointer;
+}
+
+
+.customer-form-group
+input[type="file"]::file-selector-button{
+  margin-right:12px;
+
+  padding:9px 14px;
+
+  border:0;
+
+  border-radius:8px;
+
+  background:var(--gold);
+
+  color:#160d05;
+
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+
+.customer-form-group small{
+  color:var(--muted);
+
+  font-size:12px;
+
+  line-height:1.5;
+}
+
+
+/* =========================================================
+   PHOTO PREVIEW
+   ========================================================= */
+
+.photo-preview{
+  margin-top:8px;
+
+  overflow:hidden;
+
+  border:
+    1px solid rgba(245,173,32,.20);
+
+  border-radius:16px;
+
+  background:#080504;
+}
+
+
+.photo-preview img{
+  display:block;
+
+  width:100%;
+
+  max-height:420px;
+
+  object-fit:contain;
+}
+
+
+/* =========================================================
+   CONSENT
+   ========================================================= */
+
+.customer-consent{
+  padding:16px;
+
+  border:
+    1px solid rgba(245,173,32,.16);
+
+  border-radius:13px;
+
+  background:
+    rgba(245,173,32,.045);
+}
+
+
+.customer-consent label{
+  display:flex;
+
+  align-items:flex-start;
+
+  gap:11px;
+
+  color:var(--muted);
+
+  font-size:13px;
+
+  line-height:1.6;
+
+  cursor:pointer;
+}
+
+
+.customer-consent input{
+  width:18px;
+
+  height:18px;
+
+  flex:0 0 auto;
+
+  margin-top:2px;
+
+  accent-color:var(--gold);
+}
+
+
+/* =========================================================
+   FORM MESSAGE
+   ========================================================= */
+
+.customer-form-message{
+  min-height:22px;
+
+  margin:0;
+
+  font-size:13px;
+
+  line-height:1.5;
+}
+
+
+.customer-form-message.success{
+  color:#a9d97c;
+}
+
+
+.customer-form-message.error{
+  color:#ff9b8d;
+}
+
+
+.customer-form-message.info{
+  color:var(--gold-light);
+}
+
+
+/* =========================================================
+   SUBMIT
+   ========================================================= */
+
+.customer-submit-button{
+  width:100%;
+
+  min-height:52px;
+
+  margin-top:2px;
+
+  font-size:16px;
+}
+
+
+.customer-submit-button:disabled{
+  opacity:.55;
+
+  cursor:not-allowed;
 }
 
 
@@ -579,101 +764,123 @@
    MOBILE
    ========================================================= */
 
-@media (max-width: 720px) {
+@media(max-width:720px){
 
-  .customer-gallery-hero {
-    padding: 45px 0 50px;
-  }
-
-  .customer-gallery-logo {
-    width: min(155px, 50vw);
-  }
-
-  .customer-gallery-hero p:last-child {
-    padding: 0 12px;
-    font-size: 15px;
+  .customer-gallery-hero{
+    padding:45px 0 50px;
   }
 
 
-  .customer-upload-section {
-    padding-top: 55px;
-  }
-
-  .customer-upload-card {
-    flex-direction: column;
-
-    align-items: stretch;
-
-    padding: 24px 20px;
-
-    gap: 20px;
-
-    border-radius: 19px;
-  }
-
-  .customer-upload-icon {
-    width: 70px;
-    height: 70px;
-
-    flex-basis: 70px;
-
-    align-self: center;
-
-    border-radius: 18px;
-
-    font-size: 32px;
-  }
-
-  .customer-upload-content {
-    text-align: center;
-  }
-
-  .customer-upload-points {
-    text-align: left;
-  }
-
-  .customer-upload-button {
-    width: 100%;
+  .customer-gallery-logo{
+    width:min(155px,50vw);
   }
 
 
-  .customer-form-section {
-    padding-top: 30px;
-    padding-bottom: 55px;
-  }
+  .customer-gallery-hero p:last-child{
+    padding:0 12px;
 
-  .customer-form-card {
-    padding: 27px 18px;
-
-    border-radius: 19px;
-  }
-
-  .customer-form-heading {
-    text-align: center;
+    font-size:15px;
   }
 
 
-  .customer-photo-grid {
+  .gallery-browser-section{
+    padding-top:50px;
+
+    padding-bottom:65px;
+  }
+
+
+  .gallery-tabs{
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    border-radius:15px;
+  }
+
+
+  .gallery-tab{
+    width:100%;
+  }
+
+
+  .gallery-upload-cta{
+    align-items:stretch;
+
+    flex-direction:column;
+
+    padding:20px;
+
+    text-align:center;
+  }
+
+
+  .gallery-upload-cta .btn{
+    width:100%;
+  }
+
+
+  .gallery-panel-heading{
+    margin-bottom:28px;
+  }
+
+
+  .restaurant-gallery-grid{
+    grid-template-columns:1fr;
+
+    gap:13px;
+  }
+
+
+  .restaurant-photo-placeholder{
+    min-height:220px;
+  }
+
+
+  .customer-photo-grid{
     grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+      repeat(2,minmax(0,1fr));
 
-    gap: 12px;
+    gap:12px;
   }
 
-  .customer-photo-card {
-    border-radius: 14px;
+
+  .customer-photo-card{
+    border-radius:14px;
   }
 
-  .customer-photo-card-content {
-    padding: 12px;
+
+  .customer-photo-card-content{
+    padding:12px;
   }
 
-  .customer-photo-card-comment {
-    font-size: 13px;
+
+  .customer-photo-card-comment{
+    font-size:13px;
   }
 
-  .customer-photo-card-instagram {
-    font-size: 11px;
+
+  .customer-photo-card-instagram{
+    font-size:11px;
+  }
+
+
+  .customer-form-section{
+    padding-top:0;
+
+    padding-bottom:65px;
+  }
+
+
+  .customer-form-card{
+    padding:27px 18px;
+
+    border-radius:19px;
+  }
+
+
+  .customer-form-heading{
+    text-align:center;
   }
 
 }
@@ -683,18 +890,15 @@
    VERY SMALL PHONES
    ========================================================= */
 
-@media (max-width: 420px) {
+@media(max-width:420px){
 
-  .customer-photo-grid {
-    grid-template-columns: 1fr;
+  .customer-photo-grid{
+    grid-template-columns:1fr;
   }
 
-  .customer-form-card {
-    padding: 24px 15px;
-  }
 
-  .customer-upload-card {
-    padding: 22px 16px;
+  .customer-form-card{
+    padding:24px 15px;
   }
 
 }

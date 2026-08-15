@@ -12,7 +12,7 @@
 
 <meta
   name="description"
-  content="Customer photos from UP Pandey Dhaba & Family Restaurant."
+  content="Restaurant and customer gallery of UP Pandey Dhaba & Family Restaurant."
 >
 
 <meta
@@ -21,8 +21,9 @@
 >
 
 <title>
-  Customer Photos | UP Pandey Dhaba
+  Gallery | UP Pandey Dhaba
 </title>
+
 
 <link
   rel="icon"
@@ -30,10 +31,12 @@
   href="assets/images/logo.png"
 >
 
+
 <link
   rel="stylesheet"
   href="css/style.css"
 >
+
 
 <link
   rel="stylesheet"
@@ -54,6 +57,7 @@
 
 <div class="container nav-wrap">
 
+
 <a
   class="brand"
   href="index.html"
@@ -71,6 +75,7 @@
 </a>
 
 
+
 <button
   class="menu-toggle"
   aria-label="Open navigation"
@@ -85,42 +90,47 @@
 </button>
 
 
+
 <nav class="main-nav">
+
 
 <a href="index.html">
   Home
 </a>
 
+
 <a href="index.html#about">
   About Us
 </a>
+
 
 <a href="menu.html">
   Menu
 </a>
 
+
 <a
   class="active"
   href="customer-gallery.html"
 >
-  Customer Photos
-</a>
-
-<a href="index.html#gallery">
   Gallery
 </a>
+
 
 <a href="index.html#reviews">
   Reviews
 </a>
 
+
 <a href="index.html#location">
   Location
 </a>
 
+
 <a href="index.html#contact">
   Contact
 </a>
+
 
 <a
   class="nav-call"
@@ -129,6 +139,7 @@
 >
   ☎ Call Now
 </a>
+
 
 </nav>
 
@@ -145,11 +156,14 @@
 <main class="customer-gallery-page">
 
 
-<!-- HERO -->
+<!-- =====================================================
+     HERO
+     ===================================================== -->
 
 <section class="customer-gallery-hero">
 
 <div class="container customer-gallery-hero-inner">
+
 
 <img
   class="customer-gallery-logo"
@@ -157,18 +171,22 @@
   alt="UP Pandey Dhaba & Family Restaurant"
 >
 
+
 <p class="eyebrow">
-  YOUR MEMORIES • OUR FAMILY
+  OUR MEMORIES • OUR FAMILY
 </p>
+
 
 <h1>
-  Customer Photos
+  Gallery
 </h1>
 
+
 <p>
-  Share your favourite moments from UP Pandey Dhaba
-  with us and our community.
+  Explore the food, place and special moments
+  shared by our customers.
 </p>
+
 
 </div>
 
@@ -177,82 +195,195 @@
 
 
 <!-- =====================================================
-     UPLOAD CARD
+     GALLERY TABS
      ===================================================== -->
 
-<section class="section customer-upload-section">
+<section class="section gallery-browser-section">
 
 <div class="container">
 
 
-<div class="section-heading">
+<div class="gallery-tabs-wrap">
 
-<p class="eyebrow">
-  SHARE YOUR EXPERIENCE
-</p>
 
-<h2>
-  Had a Great Time With Us?
-</h2>
+<div
+  class="gallery-tabs"
+  role="tablist"
+  aria-label="Gallery categories"
+>
 
-<p>
-  Upload your photo and tell us about your experience.
-  Your photo may be featured on our website and Instagram.
-</p>
+
+<button
+  id="restaurant-tab"
+  class="gallery-tab"
+  type="button"
+  role="tab"
+  aria-selected="false"
+  data-gallery-tab="restaurant"
+>
+  🍽️ Restaurant Gallery
+</button>
+
+
+<button
+  id="customer-tab"
+  class="gallery-tab active"
+  type="button"
+  role="tab"
+  aria-selected="true"
+  data-gallery-tab="customer"
+>
+  📸 Customer Gallery
+</button>
+
 
 </div>
 
 
 
-<div class="customer-upload-card">
+<!-- ===================================================
+     CUSTOMER ACTION
+     =================================================== -->
 
-
-<div class="customer-upload-icon">
-  📸
-</div>
-
-
-<div class="customer-upload-content">
-
-<h2>
-  Share Your Photo
-</h2>
-
-<p>
-  We would love to see your experience at
-  UP Pandey Dhaba.
-</p>
-
-
-<div class="customer-upload-points">
+<div class="gallery-upload-cta">
 
 <div>
-  ✓ Upload your favourite photo
-</div>
 
-<div>
-  ✓ Tell us something about your visit
-</div>
+<strong>
+  Share your experience with us
+</strong>
 
-<div>
-  ✓ Add your Instagram ID for collaboration
-</div>
-
-<div>
-  ✓ Approved photos may appear within 48 hours
-</div>
+<span>
+  Upload your photo and get a chance to
+  collaborate with us on Instagram.
+</span>
 
 </div>
 
 
 <a
-  class="btn btn-primary customer-upload-button"
+  class="btn btn-primary"
   href="#upload-form"
 >
-  📷 Upload Your Photo
+  📤 Upload Your Photo
 </a>
 
 </div>
+
+
+
+<!-- ===================================================
+     RESTAURANT GALLERY
+     =================================================== -->
+
+<section
+  id="restaurant-gallery-panel"
+  class="gallery-panel"
+  data-gallery-panel="restaurant"
+  hidden
+>
+
+
+<div class="gallery-panel-heading">
+
+<p class="eyebrow">
+  RESTAURANT GALLERY
+</p>
+
+<h2>
+  Taste. Place. Hospitality.
+</h2>
+
+<p>
+  Our official restaurant and food photos will
+  be added here soon.
+</p>
+
+</div>
+
+
+
+<div class="restaurant-gallery-grid">
+
+
+<div class="restaurant-photo-placeholder">
+  🍛
+  <span>
+    Food Photos Coming Soon
+  </span>
+</div>
+
+
+<div class="restaurant-photo-placeholder">
+  🏠
+  <span>
+    Restaurant Photos Coming Soon
+  </span>
+</div>
+
+
+<div class="restaurant-photo-placeholder">
+  👨‍👩‍👧‍👦
+  <span>
+    Family Dining Photos Coming Soon
+  </span>
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ===================================================
+     CUSTOMER GALLERY
+     =================================================== -->
+
+<section
+  id="customer-gallery-panel"
+  class="gallery-panel"
+  data-gallery-panel="customer"
+>
+
+
+<div class="gallery-panel-heading">
+
+<p class="eyebrow">
+  FROM OUR CUSTOMERS
+</p>
+
+<h2>
+  Memories From Our Guests
+</h2>
+
+<p>
+  Photos shared by our customers and approved
+  by the UP Pandey Dhaba team.
+</p>
+
+</div>
+
+
+
+<div
+  id="customer-photo-grid"
+  class="customer-photo-grid"
+>
+
+<div class="customer-photo-loading">
+
+<span>
+  Loading customer photos...
+</span>
+
+</div>
+
+</div>
+
+
+</section>
+
 
 </div>
 
@@ -280,16 +411,18 @@
 <div class="customer-form-heading">
 
 <p class="eyebrow">
-  PHOTO SUBMISSION
+  SHARE YOUR EXPERIENCE
 </p>
 
+
 <h2>
-  Send Us Your Memory
+  Upload Your Photo
 </h2>
 
+
 <p>
-  Please provide the details below so our team can
-  review your submission.
+  Tell us about your visit and give us the
+  opportunity to feature your memory.
 </p>
 
 </div>
@@ -309,6 +442,7 @@
 <label for="customer-photo">
 
 Your Photo
+
 <span>*</span>
 
 </label>
@@ -353,6 +487,7 @@ Your Photo
 <label for="customer-comment">
 
 Your Comment
+
 <span>*</span>
 
 </label>
@@ -383,6 +518,7 @@ Your Comment
 <label for="customer-instagram">
 
 Instagram ID
+
 <span>*</span>
 
 </label>
@@ -399,15 +535,11 @@ Instagram ID
 
 
 <small>
-  Required if you would like us to consider an Instagram
+  Required for consideration of an Instagram
   collaboration post.
 </small>
 
 </div>
-
-
-
-<!-- EMAIL -->
 
 
 
@@ -424,11 +556,14 @@ Instagram ID
   required
 >
 
+
 <span>
-  I allow UP Pandey Dhaba & Family Restaurant to
-  review this photo and, if approved, display it on
-  the website and consider it for an Instagram
-  collaboration post.
+
+I allow UP Pandey Dhaba & Family Restaurant
+to review this photo and, if approved, display
+it on the website and consider it for an
+Instagram collaboration post.
+
 </span>
 
 </label>
@@ -471,55 +606,6 @@ Instagram ID
 
 
 <!-- =====================================================
-     PUBLIC APPROVED PHOTOS
-     ===================================================== -->
-
-<section class="section customer-photos-section">
-
-<div class="container">
-
-
-<div class="section-heading">
-
-<p class="eyebrow">
-  FROM OUR CUSTOMERS
-</p>
-
-<h2>
-  Memories From Our Guests
-</h2>
-
-<p>
-  Photos shared by our customers and approved by
-  the UP Pandey Dhaba team.
-</p>
-
-</div>
-
-
-<div
-  id="customer-photo-grid"
-  class="customer-photo-grid"
->
-
-<div class="customer-photo-loading">
-
-<span>
-  Loading customer photos...
-</span>
-
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
      FOOTER
      ===================================================== -->
 
@@ -528,10 +614,13 @@ Instagram ID
 <div class="container footer-bottom">
 
 <p>
-  ©
-  <span id="year"></span>
-  UP Pandey Dhaba & Family Restaurant.
-  All rights reserved.
+
+©
+<span id="year"></span>
+
+UP Pandey Dhaba & Family Restaurant.
+All rights reserved.
+
 </p>
 
 </div>
@@ -561,32 +650,41 @@ document.addEventListener(
   "DOMContentLoaded",
   () => {
 
-    /* -----------------------------------------------
-       PHONE LINK
-       ----------------------------------------------- */
+
+    /* ===============================================
+       PHONE
+       =============================================== */
 
     if (
       typeof SITE_CONFIG !== "undefined"
     ) {
 
       document
-        .querySelectorAll("[data-phone-link]")
-        .forEach((link) => {
+        .querySelectorAll(
+          "[data-phone-link]"
+        )
+        .forEach(
+          link => {
 
-          link.href =
-            `tel:${SITE_CONFIG.phone}`;
+            link.href =
+              `tel:${SITE_CONFIG.phone}`;
 
-        });
+          }
+        );
 
     }
 
 
-    /* -----------------------------------------------
+
+    /* ===============================================
        YEAR
-       ----------------------------------------------- */
+       =============================================== */
 
     const year =
-      document.getElementById("year");
+      document.getElementById(
+        "year"
+      );
+
 
     if (year) {
 
@@ -596,15 +694,21 @@ document.addEventListener(
     }
 
 
-    /* -----------------------------------------------
+
+    /* ===============================================
        MOBILE MENU
-       ----------------------------------------------- */
+       =============================================== */
 
     const toggle =
-      document.querySelector(".menu-toggle");
+      document.querySelector(
+        ".menu-toggle"
+      );
+
 
     const nav =
-      document.querySelector(".main-nav");
+      document.querySelector(
+        ".main-nav"
+      );
 
 
     toggle?.addEventListener(
@@ -612,7 +716,10 @@ document.addEventListener(
       () => {
 
         const open =
-          nav.classList.toggle("open");
+          nav.classList.toggle(
+            "open"
+          );
+
 
         toggle.setAttribute(
           "aria-expanded",
@@ -625,23 +732,97 @@ document.addEventListener(
 
     nav
       ?.querySelectorAll("a")
-      .forEach((link) => {
+      .forEach(
+        link => {
 
-        link.addEventListener(
+          link.addEventListener(
+            "click",
+            () => {
+
+              nav.classList.remove(
+                "open"
+              );
+
+
+              toggle?.setAttribute(
+                "aria-expanded",
+                "false"
+              );
+
+            }
+          );
+
+        }
+      );
+
+
+
+    /* ===============================================
+       GALLERY TABS
+       =============================================== */
+
+    const tabs =
+      document.querySelectorAll(
+        "[data-gallery-tab]"
+      );
+
+
+    const panels =
+      document.querySelectorAll(
+        "[data-gallery-panel]"
+      );
+
+
+    tabs.forEach(
+      tab => {
+
+        tab.addEventListener(
           "click",
           () => {
 
-            nav.classList.remove("open");
+            const target =
+              tab.dataset.galleryTab;
 
-            toggle?.setAttribute(
-              "aria-expanded",
-              "false"
+
+            tabs.forEach(
+              item => {
+
+                const active =
+                  item === tab;
+
+
+                item.classList.toggle(
+                  "active",
+                  active
+                );
+
+
+                item.setAttribute(
+                  "aria-selected",
+                  String(active)
+                );
+
+              }
+            );
+
+
+            panels.forEach(
+              panel => {
+
+                panel.hidden =
+                  panel.dataset.galleryPanel
+                  !== target;
+
+              }
             );
 
           }
         );
 
-      });
+      }
+    );
+
+
 
   }
 );

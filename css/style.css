@@ -685,3 +685,35 @@ h1 strong { display: block; color: var(--gold); }
   }
 
 }
+/* =========================================================
+   VIEW FULL GALLERY BUTTON
+   ========================================================= */
+
+.gallery-view-all{
+  display:flex;
+
+  justify-content:center;
+
+  margin-top:30px;
+}
+
+
+.gallery-view-all .btn{
+  min-width:210px;
+
+  justify-content:center;
+}
+
+
+@media(max-width:720px){
+
+  .gallery-view-all{
+    margin-top:24px;
+  }
+
+  .gallery-view-all .btn{
+    width:100%;
+    max-width:320px;
+  }
+
+}
