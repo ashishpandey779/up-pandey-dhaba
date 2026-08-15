@@ -66,6 +66,7 @@
   padding:13px 14px;
   font:inherit;
   outline:none;
+  box-sizing:border-box;
 }
 
 .admin-form input:focus{
@@ -102,6 +103,11 @@
   color:var(--gold-light);
 }
 
+
+/* =========================================================
+   ADMIN DASHBOARD
+   ========================================================= */
+
 .admin-dashboard{
   min-height:100vh;
 }
@@ -111,15 +117,21 @@
   position:sticky;
   top:0;
   z-index:20;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   gap:20px;
+
   padding:
     12px
     max(20px,calc((100% - 1200px)/2));
+
   background:rgba(8,5,3,.94);
+
   backdrop-filter:blur(14px);
+
   border-bottom:
     1px solid rgba(245,173,32,.14);
 }
@@ -158,10 +170,14 @@
 
 .role-pill{
   padding:5px 9px;
+
   border:
     1px solid rgba(245,173,32,.3);
+
   border-radius:999px;
+
   color:var(--gold-light);
+
   text-transform:capitalize;
 }
 
@@ -179,7 +195,9 @@
   display:flex;
   align-items:end;
   justify-content:space-between;
+
   gap:30px;
+
   margin-bottom:35px;
 }
 
@@ -194,13 +212,23 @@
   margin:0;
 }
 
+
+/* =========================================================
+   ADMIN ALERTS
+   ========================================================= */
+
 .admin-alert{
   padding:14px 18px;
+
   border-radius:12px;
+
   border:
     1px solid rgba(245,173,32,.25);
+
   background:#171008;
+
   color:var(--cream);
+
   margin-bottom:20px;
 }
 
@@ -215,11 +243,20 @@
   color:#ffc0b5;
 }
 
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
+
 .admin-category{
   margin:0 0 30px;
+
   border:1px solid var(--line);
+
   border-radius:20px;
+
   overflow:hidden;
+
   background:
     linear-gradient(
       145deg,
@@ -230,17 +267,25 @@
 
 .admin-category-title{
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
+
   padding:20px 24px;
+
   border-bottom:
     1px solid rgba(245,173,32,.18);
-  background:rgba(245,173,32,.045);
+
+  background:
+    rgba(245,173,32,.045);
 }
 
 .admin-category-title h2{
   margin:0;
+
   color:var(--gold-light);
+
   font-size:27px;
 }
 
@@ -249,48 +294,149 @@
   font-size:13px;
 }
 
+
+/* =========================================================
+   MENU ITEM
+   ========================================================= */
+
 .admin-item{
   min-height:78px;
+
   display:flex;
+
   align-items:center;
-  justify-content:space-between;
-  gap:20px;
+
+  gap:16px;
+
   padding:16px 24px;
+
   border-bottom:
     1px solid rgba(245,173,32,.1);
 }
 
-.admin-item:last-child{
+.admin-item:last-of-type{
   border-bottom:0;
 }
 
-.item-info{
+
+/* Edit button */
+
+.edit-item-btn{
+  width:38px;
+  height:38px;
+
+  flex:0 0 38px;
+
   display:grid;
-  gap:4px;
+  place-items:center;
+
+  border:
+    1px solid rgba(245,173,32,.28);
+
+  border-radius:10px;
+
+  background:
+    rgba(245,173,32,.07);
+
+  color:var(--gold-light);
+
+  font-size:17px;
+
+  cursor:pointer;
+
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    border-color .2s ease;
 }
 
-.item-info strong{
+.edit-item-btn:hover{
+  transform:translateY(-2px);
+
+  background:
+    rgba(245,173,32,.16);
+
+  border-color:var(--gold);
+}
+
+.edit-item-btn:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:3px;
+}
+
+
+/* Item information */
+
+.item-info{
+  flex:1;
+
+  min-width:0;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+}
+
+.item-name{
+  min-width:0;
+
   font-family:"Roboto Slab",serif;
+
   font-size:18px;
+
   color:var(--cream);
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  white-space:nowrap;
 }
 
-.item-info span{
-  font-size:13px;
-  color:var(--muted);
+.item-price{
+  flex:0 0 auto;
+
+  min-width:75px;
+
+  text-align:right;
+
+  color:var(--gold);
+
+  font-family:"Roboto Slab",serif;
+
+  font-size:18px;
+
+  font-weight:800;
 }
+
+
+/* =========================================================
+   AVAILABILITY SWITCH
+   ========================================================= */
 
 .availability-control{
   display:flex;
+
   align-items:center;
-  gap:14px;
+
+  gap:10px;
+
+  flex:0 0 auto;
 }
 
 .status-text{
-  font-size:13px;
+  font-size:12px;
+
   font-weight:700;
+
   color:#a9d97c;
-  min-width:145px;
+
+  min-width:0;
+
   text-align:right;
 }
 
@@ -298,51 +444,73 @@
   color:#ff9b8d;
 }
 
-.admin-item.is-off .item-info strong{
+.admin-item.is-off .item-name{
   color:#b6aa9a;
+}
+
+.admin-item.is-off .item-price{
+  color:#9f8161;
 }
 
 .switch{
   position:relative;
+
   width:54px;
   height:30px;
+
   display:inline-block;
+
   flex:0 0 auto;
 }
 
 .switch input{
   opacity:0;
+
   width:0;
   height:0;
 }
 
 .slider{
   position:absolute;
+
   inset:0;
+
   cursor:pointer;
+
   background:#4a3a2e;
+
   border-radius:999px;
+
   border:
     1px solid rgba(255,255,255,.08);
+
   transition:.2s;
 }
 
 .slider:before{
   content:"";
+
   position:absolute;
+
   width:22px;
   height:22px;
+
   left:3px;
   top:3px;
+
   background:#fff3d0;
+
   border-radius:50%;
+
   transition:.2s;
+
   box-shadow:
     0 2px 6px rgba(0,0,0,.35);
 }
 
 .switch input:checked + .slider{
   background:var(--green);
+
   border-color:
     rgba(168,220,115,.45);
 }
@@ -354,15 +522,83 @@
 .switch input:focus-visible + .slider{
   outline:
     2px solid var(--gold);
+
   outline-offset:3px;
 }
 
+
+/* =========================================================
+   ADD ITEM
+   ========================================================= */
+
+.add-item-area{
+  display:flex;
+
+  justify-content:center;
+
+  padding:18px 24px 20px;
+
+  border-top:
+    1px dashed rgba(245,173,32,.15);
+
+  background:
+    rgba(245,173,32,.025);
+}
+
+.add-item-btn{
+  min-height:42px;
+
+  padding:9px 18px;
+
+  border:
+    1px dashed rgba(245,173,32,.42);
+
+  border-radius:10px;
+
+  background:
+    rgba(245,173,32,.06);
+
+  color:var(--gold-light);
+
+  font-weight:800;
+
+  cursor:pointer;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    transform .2s ease;
+}
+
+.add-item-btn:hover{
+  transform:translateY(-2px);
+
+  background:
+    rgba(245,173,32,.13);
+
+  border-color:var(--gold);
+}
+
+.add-item-btn:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:3px;
+}
+
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
 .admin-empty{
   padding:35px;
+
   text-align:center;
+
   border:
     1px dashed var(--line);
+
   border-radius:18px;
+
   color:var(--muted);
 }
 
@@ -373,9 +609,201 @@
 
 .admin-empty strong{
   color:var(--cream);
+
   font-family:"Roboto Slab",serif;
+
   margin-bottom:6px;
 }
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.admin-modal{
+  position:fixed;
+
+  inset:0;
+
+  z-index:100;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:
+    rgba(0,0,0,.72);
+
+  backdrop-filter:blur(8px);
+}
+
+.admin-modal[hidden]{
+  display:none;
+}
+
+.admin-modal-card{
+  width:min(480px,100%);
+
+  padding:28px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1c1008,
+      #0e0805
+    );
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.5);
+}
+
+.admin-modal-header{
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  gap:20px;
+
+  margin-bottom:24px;
+}
+
+.admin-modal-header h2{
+  margin:0;
+
+  color:var(--gold-light);
+
+  font-size:28px;
+}
+
+.modal-close{
+  width:36px;
+  height:36px;
+
+  border:0;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,.06);
+
+  color:var(--cream);
+
+  font-size:22px;
+
+  cursor:pointer;
+}
+
+.modal-close:hover{
+  background:
+    rgba(245,173,32,.14);
+
+  color:var(--gold-light);
+}
+
+.modal-form{
+  display:grid;
+
+  gap:17px;
+}
+
+.modal-form label{
+  display:grid;
+
+  gap:7px;
+
+  color:var(--cream);
+
+  font-weight:700;
+}
+
+.modal-form input,
+.modal-form select{
+  width:100%;
+
+  box-sizing:border-box;
+
+  border:
+    1px solid rgba(245,173,32,.28);
+
+  background:#0b0705;
+
+  color:var(--cream);
+
+  border-radius:10px;
+
+  padding:13px 14px;
+
+  font:inherit;
+
+  outline:none;
+}
+
+.modal-form input:focus,
+.modal-form select:focus{
+  border-color:var(--gold);
+}
+
+.modal-actions{
+  display:flex;
+
+  gap:12px;
+
+  margin-top:5px;
+}
+
+.modal-actions .btn{
+  flex:1;
+}
+
+
+/* =========================================================
+   FORGOT PASSWORD
+   ========================================================= */
+
+.forgot-password-btn{
+  display:block;
+
+  width:100%;
+
+  margin-top:2px;
+
+  padding:8px;
+
+  border:0;
+
+  background:transparent;
+
+  color:var(--gold-light);
+
+  font:inherit;
+
+  font-size:13px;
+
+  cursor:pointer;
+}
+
+.forgot-password-btn:hover{
+  text-decoration:underline;
+}
+
+.forgot-password-btn:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media(max-width:720px){
 
@@ -401,6 +829,7 @@
 
   .admin-heading{
     align-items:stretch;
+
     flex-direction:column;
   }
 
@@ -413,28 +842,90 @@
   }
 
   .admin-item{
-    padding:16px 18px;
-    align-items:flex-start;
+    padding:14px 14px;
+
+    gap:9px;
+  }
+
+  .edit-item-btn{
+    width:34px;
+    height:34px;
+
+    flex-basis:34px;
+
+    font-size:15px;
+  }
+
+  .item-info{
+    gap:10px;
+  }
+
+  .item-name{
+    font-size:15px;
+  }
+
+  .item-price{
+    min-width:55px;
+    font-size:15px;
   }
 
   .availability-control{
     flex-direction:column-reverse;
-    align-items:flex-end;
-    gap:7px;
+
+    align-items:center;
+
+    gap:5px;
   }
 
   .status-text{
     min-width:0;
-    text-align:right;
-    font-size:11px;
+
+    font-size:9px;
+
+    text-align:center;
+
+    max-width:82px;
   }
 
-  .item-info strong{
-    font-size:16px;
+  .switch{
+    width:48px;
+    height:27px;
   }
 
-  .item-info span{
-    font-size:12px;
+  .slider:before{
+    width:19px;
+    height:19px;
+
+    left:3px;
+    top:3px;
+  }
+
+  .switch input:checked + .slider:before{
+    transform:translateX(21px);
+  }
+
+  .add-item-area{
+    padding:14px 16px 17px;
+  }
+
+  .add-item-btn{
+    width:100%;
+  }
+
+  .admin-modal{
+    padding:14px;
+  }
+
+  .admin-modal-card{
+    padding:22px 18px;
+  }
+
+  .admin-modal-header h2{
+    font-size:24px;
+  }
+
+  .modal-actions{
+    flex-direction:column;
   }
 
   .role-pill{
@@ -444,26 +935,4 @@
   .admin-user .btn{
     padding:8px 10px;
   }
-}
-
-.forgot-password-btn{
-  display:block;
-  width:100%;
-  margin-top:2px;
-  padding:8px;
-  border:0;
-  background:transparent;
-  color:var(--gold-light);
-  font:inherit;
-  font-size:13px;
-  cursor:pointer;
-}
-
-.forgot-password-btn:hover{
-  text-decoration:underline;
-}
-
-.forgot-password-btn:disabled{
-  opacity:.55;
-  cursor:not-allowed;
 }

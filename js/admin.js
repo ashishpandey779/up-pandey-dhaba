@@ -8,7 +8,9 @@ import {
 import {
   doc,
   getDoc,
-  updateDoc
+  updateDoc,
+  addDoc,
+  collection
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
 import {
@@ -23,6 +25,7 @@ import {
 
 
 const ADMIN_EMAIL = "arindia.in@gmail.com";
+
 
 const loginPanel =
   document.getElementById("login-panel");
@@ -51,14 +54,53 @@ const seedButton =
 const logoutButton =
   document.getElementById("logout-btn");
 
+
+/* Modal */
+
+const itemModal =
+  document.getElementById("item-modal");
+
+const itemForm =
+  document.getElementById("item-form");
+
+const modalTitle =
+  document.getElementById("modal-title");
+
+const modalClose =
+  document.getElementById("modal-close");
+
+const modalCancel =
+  document.getElementById("modal-cancel");
+
+const modalSave =
+  document.getElementById("modal-save");
+
+const itemNameInput =
+  document.getElementById("item-name");
+
+const itemPriceInput =
+  document.getElementById("item-price");
+
+const itemCategoryInput =
+  document.getElementById("item-category");
+
+
 let unsubscribeMenu = null;
 
+let editingItemId = null;
+
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
 
 function setLoginMessage(
   text,
   type = "error"
 ) {
+
   loginMessage.textContent = text;
+
   loginMessage.className =
     `form-message ${type}`;
 }
@@ -68,8 +110,11 @@ function showAdminMessage(
   text,
   type = "info"
 ) {
+
   adminMessage.hidden = false;
+
   adminMessage.textContent = text;
+
   adminMessage.className =
     `admin-alert ${type}`;
 
@@ -79,16 +124,50 @@ function showAdminMessage(
 
   showAdminMessage.timer =
     window.setTimeout(() => {
+
       adminMessage.hidden = true;
+
     }, 4500);
 }
 
 
 function setView(loggedIn) {
+
   loginPanel.hidden = loggedIn;
+
   dashboard.hidden = !loggedIn;
 }
 
+
+function money(value) {
+
+  return `₹${Number(value || 0).toLocaleString("en-IN")}`;
+
+}
+
+
+function createId() {
+
+  if (
+    typeof crypto !== "undefined" &&
+    typeof crypto.randomUUID === "function"
+  ) {
+
+    return crypto.randomUUID();
+
+  }
+
+  return (
+    Date.now().toString(36) +
+    Math.random().toString(36).slice(2)
+  );
+
+}
+
+
+/* =========================================================
+   AUTHORIZATION
+   ========================================================= */
 
 async function getAuthorizedProfile(user) {
 
@@ -98,34 +177,142 @@ async function getAuthorizedProfile(user) {
   const profileSnap =
     await getDoc(profileRef);
 
+
   if (!profileSnap.exists()) {
+
     return null;
+
   }
+
 
   const profile =
     profileSnap.data();
 
+
   if (profile.active !== true) {
+
     return null;
+
   }
+
 
   if (
     !["admin", "menu_manager"]
       .includes(profile.role)
   ) {
+
     return null;
+
   }
 
+
   return profile;
+
 }
 
 
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+function openAddModal(category) {
+
+  editingItemId = null;
+
+  modalTitle.textContent =
+    "Add Menu Item";
+
+  modalSave.textContent =
+    "Add Item";
+
+  itemForm.reset();
+
+  itemCategoryInput.value =
+    category;
+
+  itemCategoryInput.disabled =
+    true;
+
+  itemModal.hidden = false;
+
+  window.setTimeout(() => {
+
+    itemNameInput.focus();
+
+  }, 50);
+
+}
+
+
+function openEditModal(item) {
+
+  editingItemId =
+    item.id;
+
+  modalTitle.textContent =
+    "Edit Menu Item";
+
+  modalSave.textContent =
+    "Save Changes";
+
+  itemNameInput.value =
+    item.name || "";
+
+  itemPriceInput.value =
+    Number(item.price || 0);
+
+  itemCategoryInput.value =
+    item.category || "Main Course";
+
+  itemCategoryInput.disabled =
+    true;
+
+  itemModal.hidden = false;
+
+  window.setTimeout(() => {
+
+    itemNameInput.focus();
+
+    itemNameInput.select();
+
+  }, 50);
+
+}
+
+
+function closeModal() {
+
+  itemModal.hidden = true;
+
+  editingItemId = null;
+
+  itemForm.reset();
+
+  itemCategoryInput.disabled =
+    false;
+
+}
+
+
+/* =========================================================
+   RENDER ADMIN MENU
+   ========================================================= */
+
 function renderAdminMenu(items) {
+
+  const groups = [
+    "Main Course",
+    "Raita",
+    "Roti",
+    "Drinks"
+  ];
+
 
   if (!items.length) {
 
     menuRoot.innerHTML = `
       <div class="admin-empty">
+
         <strong>
           No menu records yet.
         </strong>
@@ -134,22 +321,19 @@ function renderAdminMenu(items) {
           Use “Initialize Menu”
           to create the current menu.
         </span>
+
       </div>
     `;
 
     seedButton.hidden = false;
 
     return;
+
   }
+
 
   seedButton.hidden = true;
 
-  const groups = [
-    "Main Course",
-    "Raita",
-    "Roti",
-    "Drinks"
-  ];
 
   menuRoot.innerHTML =
     groups
@@ -161,86 +345,225 @@ function renderAdminMenu(items) {
               item.category === category
           );
 
-        if (!categoryItems.length) {
-          return "";
-        }
 
         return `
-          <section class="admin-category">
+          <section
+            class="admin-category"
+            data-category="${category}"
+          >
 
             <div class="admin-category-title">
-              <h2>${category}</h2>
+
+              <h2>
+                ${category}
+              </h2>
+
               <span>
-                ${categoryItems.length} items
+                ${categoryItems.length}
+                ${categoryItems.length === 1
+                  ? "item"
+                  : "items"}
               </span>
+
             </div>
 
-            ${categoryItems
-              .map(item => `
 
-                <article
-                  class="admin-item ${
-                    item.available === false
-                      ? "is-off"
-                      : ""
-                  }"
-                  data-item-id="${item.id}"
-                >
+            ${
+              categoryItems.length
+                ? categoryItems
+                    .map(item => `
 
-                  <div class="item-info">
-
-                    <strong>
-                      ${item.name}
-                    </strong>
-
-                    <span>
-                      ${item.category}
-                      ·
-                      ₹${Number(
-                        item.price
-                      ).toLocaleString("en-IN")}
-                    </span>
-
-                  </div>
-
-                  <div class="availability-control">
-
-                    <span class="status-text">
-                      ${
-                        item.available === false
-                          ? "Currently Unavailable"
-                          : "Available"
-                      }
-                    </span>
-
-                    <label class="switch">
-
-                      <input
-                        type="checkbox"
-                        ${
-                          item.available !== false
-                            ? "checked"
+                      <article
+                        class="admin-item ${
+                          item.available === false
+                            ? "is-off"
                             : ""
-                        }
-                        data-availability="${item.id}"
+                        }"
+                        data-item-id="${item.id}"
                       >
 
-                      <span class="slider"></span>
 
-                    </label>
+                        <!-- EDIT -->
 
-                  </div>
+                        <button
+                          class="edit-item-btn"
+                          type="button"
+                          data-edit-item="${item.id}"
+                          title="Edit ${item.name}"
+                          aria-label="Edit ${item.name}"
+                        >
+                          ✏️
+                        </button>
 
-                </article>
 
-              `)
-              .join("")}
+                        <!-- NAME + PRICE -->
+
+                        <div class="item-info">
+
+                          <span class="item-name">
+                            ${item.name}
+                          </span>
+
+                          <span class="item-price">
+                            ${money(item.price)}
+                          </span>
+
+                        </div>
+
+
+                        <!-- AVAILABILITY -->
+
+                        <div class="availability-control">
+
+                          <span class="status-text">
+                            ${
+                              item.available === false
+                                ? "Currently Unavailable"
+                                : "Available"
+                            }
+                          </span>
+
+
+                          <label class="switch">
+
+                            <input
+                              type="checkbox"
+                              ${
+                                item.available !== false
+                                  ? "checked"
+                                  : ""
+                              }
+                              data-availability="${item.id}"
+                            >
+
+                            <span class="slider"></span>
+
+                          </label>
+
+                        </div>
+
+
+                      </article>
+
+                    `)
+                    .join("")
+                : `
+                    <div class="admin-empty">
+                      <strong>
+                        No items in this section.
+                      </strong>
+
+                      <span>
+                        Add the first item below.
+                      </span>
+                    </div>
+                  `
+            }
+
+
+            <!-- ADD ITEM -->
+
+            <div class="add-item-area">
+
+              <button
+                class="add-item-btn"
+                type="button"
+                data-add-item="${category}"
+              >
+                ＋ Add Item
+              </button>
+
+            </div>
+
 
           </section>
         `;
+
       })
       .join("");
 
+
+  attachMenuControls(items);
+
+}
+
+
+/* =========================================================
+   MENU CONTROLS
+   ========================================================= */
+
+function attachMenuControls(items) {
+
+
+  /* ---------------------------------------------
+     EDIT BUTTONS
+     --------------------------------------------- */
+
+  menuRoot
+    .querySelectorAll(
+      "[data-edit-item]"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const id =
+            button.dataset.editItem;
+
+          const item =
+            items.find(
+              entry =>
+                entry.id === id
+            );
+
+          if (!item) {
+
+            showAdminMessage(
+              "Could not find this menu item.",
+              "error"
+            );
+
+            return;
+
+          }
+
+          openEditModal(item);
+
+        }
+      );
+
+    });
+
+
+  /* ---------------------------------------------
+     ADD BUTTONS
+     --------------------------------------------- */
+
+  menuRoot
+    .querySelectorAll(
+      "[data-add-item]"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          openAddModal(
+            button.dataset.addItem
+          );
+
+        }
+      );
+
+    });
+
+
+  /* ---------------------------------------------
+     AVAILABILITY SWITCHES
+     --------------------------------------------- */
 
   menuRoot
     .querySelectorAll(
@@ -256,14 +579,18 @@ function renderAdminMenu(items) {
             input.dataset.availability;
 
           const itemCard =
-            input.closest(".admin-item");
+            input.closest(
+              ".admin-item"
+            );
 
           const status =
             itemCard.querySelector(
               ".status-text"
             );
 
+
           input.disabled = true;
+
 
           try {
 
@@ -275,20 +602,23 @@ function renderAdminMenu(items) {
               }
             );
 
+
             itemCard.classList.toggle(
               "is-off",
               !input.checked
             );
+
 
             status.textContent =
               input.checked
                 ? "Available"
                 : "Currently Unavailable";
 
+
             showAdminMessage(
               `${
                 itemCard.querySelector(
-                  "strong"
+                  ".item-name"
                 ).textContent
               } is now ${
                 input.checked
@@ -298,17 +628,21 @@ function renderAdminMenu(items) {
               "success"
             );
 
+
           } catch (error) {
 
             input.checked =
               !input.checked;
+
 
             showAdminMessage(
               "Could not update this item. Please try again.",
               "error"
             );
 
+
             console.error(error);
+
 
           } finally {
 
@@ -320,8 +654,203 @@ function renderAdminMenu(items) {
       );
 
     });
+
 }
 
+
+/* =========================================================
+   ADD / EDIT ITEM
+   ========================================================= */
+
+itemForm.addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+
+    const name =
+      itemNameInput.value.trim();
+
+
+    const price =
+      Number(itemPriceInput.value);
+
+
+    const category =
+      itemCategoryInput.value;
+
+
+    if (!name) {
+
+      showAdminMessage(
+        "Please enter an item name.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if (
+      !Number.isFinite(price) ||
+      price < 0
+    ) {
+
+      showAdminMessage(
+        "Please enter a valid price.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    modalSave.disabled = true;
+
+
+    try {
+
+
+      /* -----------------------------------------
+         EDIT EXISTING ITEM
+         ----------------------------------------- */
+
+      if (editingItemId) {
+
+        await updateDoc(
+          doc(
+            db,
+            "menu",
+            editingItemId
+          ),
+          {
+            name,
+            price
+          }
+        );
+
+
+        showAdminMessage(
+          `${name} updated successfully.`,
+          "success"
+        );
+
+
+      }
+
+      /* -----------------------------------------
+         ADD NEW ITEM
+         ----------------------------------------- */
+
+      else {
+
+        await addDoc(
+          collection(
+            db,
+            "menu"
+          ),
+          {
+            id: createId(),
+            name,
+            price,
+            category,
+            available: true
+          }
+        );
+
+
+        showAdminMessage(
+          `${name} added to ${category}.`,
+          "success"
+        );
+
+      }
+
+
+      closeModal();
+
+
+    } catch (error) {
+
+      console.error(
+        "Menu save error:",
+        error
+      );
+
+
+      showAdminMessage(
+        editingItemId
+          ? "Could not update the menu item."
+          : "Could not add the menu item.",
+        "error"
+      );
+
+
+    } finally {
+
+      modalSave.disabled = false;
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   MODAL EVENTS
+   ========================================================= */
+
+modalClose.addEventListener(
+  "click",
+  closeModal
+);
+
+
+modalCancel.addEventListener(
+  "click",
+  closeModal
+);
+
+
+itemModal.addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target === itemModal
+    ) {
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key === "Escape" &&
+      !itemModal.hidden
+    ) {
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
 
 loginForm.addEventListener(
   "submit",
@@ -329,10 +858,12 @@ loginForm.addEventListener(
 
     event.preventDefault();
 
+
     setLoginMessage(
       "Signing in…",
       "info"
     );
+
 
     const email =
       document
@@ -340,10 +871,12 @@ loginForm.addEventListener(
         .value
         .trim();
 
+
     const password =
       document
         .getElementById("password")
         .value;
+
 
     try {
 
@@ -354,10 +887,12 @@ loginForm.addEventListener(
           password
         );
 
+
       const profile =
         await getAuthorizedProfile(
           credential.user
         );
+
 
       if (!profile) {
 
@@ -366,7 +901,9 @@ loginForm.addEventListener(
         throw new Error(
           "NOT_AUTHORIZED"
         );
+
       }
+
 
     } catch (error) {
 
@@ -378,14 +915,21 @@ loginForm.addEventListener(
 
           : "Sign in failed. Check your email and password.";
 
+
       setLoginMessage(
         message,
         "error"
       );
 
     }
+
   }
 );
+
+
+/* =========================================================
+   FORGOT PASSWORD
+   ========================================================= */
 
 forgotPasswordButton.addEventListener(
   "click",
@@ -397,6 +941,7 @@ forgotPasswordButton.addEventListener(
         .value
         .trim();
 
+
     if (!email) {
 
       setLoginMessage(
@@ -404,17 +949,24 @@ forgotPasswordButton.addEventListener(
         "error"
       );
 
+
       document
         .getElementById("email")
         .focus();
 
+
       return;
+
     }
 
-    forgotPasswordButton.disabled = true;
+
+    forgotPasswordButton.disabled =
+      true;
+
 
     forgotPasswordButton.textContent =
       "Sending reset email…";
+
 
     try {
 
@@ -423,10 +975,12 @@ forgotPasswordButton.addEventListener(
         email
       );
 
+
       setLoginMessage(
         "Password reset email sent. Check your inbox and spam folder.",
         "info"
       );
+
 
     } catch (error) {
 
@@ -435,8 +989,10 @@ forgotPasswordButton.addEventListener(
         error
       );
 
+
       let message =
         "Unable to send the reset email. Please check the email address and try again.";
+
 
       if (
         error.code ===
@@ -446,7 +1002,9 @@ forgotPasswordButton.addEventListener(
         message =
           "Please enter a valid email address.";
 
-      } else if (
+      }
+
+      else if (
         error.code ===
         "auth/user-not-found"
       ) {
@@ -454,7 +1012,9 @@ forgotPasswordButton.addEventListener(
         message =
           "No account was found with this email address.";
 
-      } else if (
+      }
+
+      else if (
         error.code ===
         "auth/too-many-requests"
       ) {
@@ -464,10 +1024,12 @@ forgotPasswordButton.addEventListener(
 
       }
 
+
       setLoginMessage(
         message,
         "error"
       );
+
 
     } finally {
 
@@ -483,13 +1045,23 @@ forgotPasswordButton.addEventListener(
 );
 
 
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
 logoutButton.addEventListener(
   "click",
   async () => {
+
     await signOut(auth);
+
   }
 );
 
+
+/* =========================================================
+   INITIALIZE MENU
+   ========================================================= */
 
 seedButton.addEventListener(
   "click",
@@ -500,10 +1072,12 @@ seedButton.addEventListener(
     seedButton.textContent =
       "Initializing…";
 
+
     try {
 
       const result =
         await seedMenuIfEmpty();
+
 
       showAdminMessage(
         result.created
@@ -512,6 +1086,7 @@ seedButton.addEventListener(
         "success"
       );
 
+
     } catch (error) {
 
       showAdminMessage(
@@ -519,19 +1094,27 @@ seedButton.addEventListener(
         "error"
       );
 
+
       console.error(error);
+
 
     } finally {
 
-      seedButton.disabled = false;
+      seedButton.disabled =
+        false;
 
       seedButton.textContent =
         "Initialize Menu";
 
     }
+
   }
 );
 
+
+/* =========================================================
+   AUTH STATE
+   ========================================================= */
 
 onAuthStateChanged(
   auth,
@@ -540,7 +1123,9 @@ onAuthStateChanged(
     if (!user) {
 
       if (unsubscribeMenu) {
+
         unsubscribeMenu();
+
       }
 
       unsubscribeMenu = null;
@@ -548,40 +1133,53 @@ onAuthStateChanged(
       setView(false);
 
       return;
+
     }
+
 
     try {
 
       const profile =
         await getAuthorizedProfile(user);
 
+
       if (!profile) {
 
         await signOut(auth);
+
 
         setLoginMessage(
           "This account is not permitted to access the management panel.",
           "error"
         );
 
+
         return;
+
       }
+
 
       document.getElementById(
         "user-email"
       ).textContent =
         user.email || ADMIN_EMAIL;
 
+
       document.getElementById(
         "user-role"
       ).textContent =
         profile.role;
 
+
       setView(true);
 
+
       if (unsubscribeMenu) {
+
         unsubscribeMenu();
+
       }
+
 
       unsubscribeMenu =
         subscribeToMenu(
@@ -589,6 +1187,7 @@ onAuthStateChanged(
           error => {
 
             console.error(error);
+
 
             showAdminMessage(
               "Unable to load the menu from Firestore.",
@@ -598,11 +1197,14 @@ onAuthStateChanged(
           }
         );
 
+
     } catch (error) {
 
       console.error(error);
 
+
       await signOut(auth);
+
 
       setLoginMessage(
         "Unable to verify your management access.",
