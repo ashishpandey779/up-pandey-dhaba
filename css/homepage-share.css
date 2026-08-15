@@ -18,9 +18,7 @@
   padding: 28px 34px;
   border: 1px solid rgba(245, 173, 32, .34);
   border-radius: 22px;
-  background:
-    radial-gradient(circle at 8% 0%, rgba(245, 173, 32, .13), transparent 42%),
-    linear-gradient(135deg, #1a0f08, #0e0805);
+  background: radial-gradient(circle at 8% 0%, rgba(245, 173, 32, .13), transparent 42%), linear-gradient(135deg, #1a0f08, #0e0805);
   box-shadow: 0 18px 50px rgba(0, 0, 0, .24);
   isolation: isolate;
 }
@@ -40,7 +38,8 @@
 }
 
 .share-experience-copy,
-.share-experience-button {
+.share-experience-button,
+.share-experience-actions {
   position: relative;
   z-index: 1;
 }
@@ -65,8 +64,15 @@
   color: var(--muted);
 }
 
-.share-experience-button {
+.share-experience-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
   flex: 0 0 auto;
+}
+
+.share-experience-button {
   white-space: nowrap;
 }
 
@@ -93,6 +99,12 @@
     gap: 20px;
     padding: 26px 20px;
     text-align: center;
+  }
+
+  .share-experience-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
   }
 
   .share-experience-button {
