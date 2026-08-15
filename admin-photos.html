@@ -1,81 +1,444 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
+
+<meta
+  name="robots"
+  content="noindex,nofollow,noarchive"
+>
+
 <title>Customer Photos | UP Pandey Dhaba</title>
-<link rel="icon" type="image/png" href="assets/images/logo.png">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/admin.css">
-<link rel="stylesheet" href="css/admin-photos.css">
+
+<link
+  rel="icon"
+  type="image/png"
+  href="assets/images/logo.png"
+>
+
+<link
+  rel="stylesheet"
+  href="css/style.css"
+>
+
+<link
+  rel="stylesheet"
+  href="css/admin.css"
+>
+
+<link
+  rel="stylesheet"
+  href="css/admin-photos.css"
+>
+
 </head>
+
+
 <body class="admin-body">
+
+
 <main class="admin-shell">
-<section id="photo-login-panel" class="admin-card login-card">
-<img src="assets/images/logo.png" class="admin-logo" alt="UP Pandey Dhaba">
-<p class="eyebrow">PRIVATE ACCESS</p>
-<h1>Customer Photos</h1>
-<p class="admin-muted">Sign in with an authorized restaurant account to review customer photos.</p>
-<form id="photo-login-form" class="admin-form">
-<label>Email<input id="photo-email" type="email" autocomplete="username" required></label>
-<label>Password<input id="photo-password" type="password" autocomplete="current-password" required></label>
-<button class="btn btn-primary" type="submit">Sign In</button>
-<p id="photo-login-message" class="form-message" aria-live="polite"></p>
+
+
+<!-- =====================================================
+     LOGIN
+     ===================================================== -->
+
+<section
+  id="photo-login-panel"
+  class="admin-card login-card"
+>
+
+<img
+  src="assets/images/logo.png"
+  class="admin-logo"
+  alt="UP Pandey Dhaba"
+>
+
+
+<p class="eyebrow">
+  PRIVATE ACCESS
+</p>
+
+
+<h1>
+  Customer Photos
+</h1>
+
+
+<p class="admin-muted">
+  Sign in with an authorized restaurant account
+  to review customer photos.
+</p>
+
+
+<form
+  id="photo-login-form"
+  class="admin-form"
+>
+
+
+<label>
+
+Email
+
+<input
+  id="photo-email"
+  type="email"
+  autocomplete="username"
+  required
+>
+
+</label>
+
+
+<label>
+
+Password
+
+<input
+  id="photo-password"
+  type="password"
+  autocomplete="current-password"
+  required
+>
+
+</label>
+
+
+<button
+  class="btn btn-primary"
+  type="submit"
+>
+  Sign In
+</button>
+
+
+<p
+  id="photo-login-message"
+  class="form-message"
+  aria-live="polite"
+></p>
+
+
 </form>
-<a class="back-link" href="admin.html">← Back to Management</a>
+
+
+<a
+  class="back-link"
+  href="admin.html"
+>
+  ← Back to Management
+</a>
+
+
 </section>
 
-<section id="photo-dashboard" class="admin-dashboard" hidden>
+
+
+<!-- =====================================================
+     PHOTO DASHBOARD
+     ===================================================== -->
+
+<section
+  id="photo-dashboard"
+  class="admin-dashboard"
+  hidden
+>
+
+
 <header class="admin-topbar">
+
+
 <div class="admin-brand">
-<img src="assets/images/logo.png" alt="">
-<div><strong>UP PANDEY DHABA</strong><span>Customer Photos</span></div>
+
+<img
+  src="assets/images/logo.png"
+  alt=""
+>
+
+<div>
+
+<strong>
+  UP PANDEY DHABA
+</strong>
+
+<span>
+  Customer Photos
+</span>
+
 </div>
+
+</div>
+
+
+
 <div class="admin-user">
+
 <span id="photo-user-email"></span>
-<span id="photo-user-role" class="role-pill"></span>
-<button id="enable-photo-notifications" class="btn btn-outline" type="button">🔔 Enable Notifications</button>
-<a href="admin.html" class="btn btn-outline">Menu</a>
-<button id="photo-logout-btn" class="btn btn-outline" type="button">Logout</button>
+
+<span
+  id="photo-user-role"
+  class="role-pill"
+></span>
+
+<button
+  id="enable-photo-notifications"
+  class="btn btn-outline"
+  type="button"
+>
+  🔔 Enable Notifications
+</button>
+
+
+<a
+  href="admin.html"
+  class="btn btn-outline"
+>
+  Menu
+</a>
+
+
+<button
+  id="photo-logout-btn"
+  class="btn btn-outline"
+  type="button"
+>
+  Logout
+</button>
+
 </div>
+
+
 </header>
 
+
+
 <div class="admin-content container">
+
+
+<!-- =====================================================
+     PAGE HEADING
+     ===================================================== -->
+
 <div class="photo-admin-heading">
+
+
 <div>
-<p class="eyebrow">CUSTOMER CONTENT</p>
-<h1>Customer Photos</h1>
-<p>Review customer-submitted photos before they are displayed publicly on the website.</p>
-<p id="photo-notification-status" class="admin-muted" aria-live="polite">Notifications are not enabled.</p>
-</div>
-<button id="refresh-photos-btn" class="btn btn-outline" type="button">↻ Refresh</button>
+
+<p class="eyebrow">
+  CUSTOMER CONTENT
+</p>
+
+<h1>
+  Customer Photos
+</h1>
+
+<p>
+  Review customer-submitted photos before they are
+  displayed publicly on the website.
+</p>
+
+<p
+  id="photo-notification-status"
+  class="admin-muted"
+  aria-live="polite"
+>
+  Notifications are not enabled.
+</p>
+
 </div>
 
-<div id="photo-admin-message" class="admin-alert" hidden></div>
+
+<button
+  id="refresh-photos-btn"
+  class="btn btn-outline"
+  type="button"
+>
+  ↻ Refresh
+</button>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     MESSAGE
+     ===================================================== -->
+
+<div
+  id="photo-admin-message"
+  class="admin-alert"
+  hidden
+></div>
+
+
+
+<!-- =====================================================
+     STATS
+     ===================================================== -->
 
 <div class="photo-stats">
-<div class="photo-stat-card"><span>Pending</span><strong id="pending-count">0</strong></div>
-<div class="photo-stat-card"><span>Published</span><strong id="approved-count">0</strong></div>
-<div class="photo-stat-card"><span>Declined</span><strong id="rejected-count">0</strong></div>
-<div class="photo-stat-card"><span>Total</span><strong id="total-count">0</strong></div>
+
+
+<div class="photo-stat-card">
+
+<span>
+  Pending
+</span>
+
+<strong id="pending-count">
+  0
+</strong>
+
 </div>
+
+
+<div class="photo-stat-card">
+
+<span>
+  Published
+</span>
+
+<strong id="approved-count">
+  0
+</strong>
+
+</div>
+
+
+<div class="photo-stat-card">
+
+<span>
+  Declined
+</span>
+
+<strong id="rejected-count">
+  0
+</strong>
+
+</div>
+
+
+<div class="photo-stat-card">
+
+<span>
+  Total
+</span>
+
+<strong id="total-count">
+  0
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     FILTER
+     ===================================================== -->
 
 <div class="photo-filter-bar">
-<button class="photo-filter active" data-photo-filter="all" type="button">All</button>
-<button class="photo-filter" data-photo-filter="pending" type="button">Pending</button>
-<button class="photo-filter" data-photo-filter="approved" type="button">Published</button>
-<button class="photo-filter" data-photo-filter="rejected" type="button">Declined</button>
+
+
+<button
+  class="photo-filter active"
+  data-photo-filter="all"
+  type="button"
+>
+  All
+</button>
+
+
+<button
+  class="photo-filter"
+  data-photo-filter="pending"
+  type="button"
+>
+  Pending
+</button>
+
+
+<button
+  class="photo-filter"
+  data-photo-filter="approved"
+  type="button"
+>
+  Published
+</button>
+
+
+<button
+  class="photo-filter"
+  data-photo-filter="rejected"
+  type="button"
+>
+  Declined
+</button>
+
+
 </div>
 
-<div id="photo-admin-list" class="photo-admin-list">
-<div class="photo-admin-empty"><strong>Loading customer photos...</strong><span>Please wait.</span></div>
+
+
+<!-- =====================================================
+     PHOTO LIST
+     ===================================================== -->
+
+<div
+  id="photo-admin-list"
+  class="photo-admin-list"
+>
+
+
+<div class="photo-admin-empty">
+
+<strong>
+  Loading customer photos...
+</strong>
+
+<span>
+  Please wait.
+</span>
+
 </div>
+
+
 </div>
+
+
+</div>
+
+
 </section>
+
+
 </main>
 
-<script type="module" src="js/admin-photos.js?v=20260816"></script>
-<script type="module" src="js/fcm-admin.js?v=20260816"></script>
+
+
+<script
+  type="module"
+  src="js/admin-photos.js"
+></script>
+
+<script
+  type="module"
+  src="js/fcm-admin.js?v=20260816"
+></script>
+
+
 </body>
+
 </html>
