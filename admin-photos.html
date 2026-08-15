@@ -189,6 +189,14 @@ Password
   class="role-pill"
 ></span>
 
+<button
+  id="enable-photo-notifications"
+  class="btn btn-outline"
+  type="button"
+>
+  🔔 Enable Notifications
+</button>
+
 
 <a
   href="admin.html"
@@ -236,6 +244,14 @@ Password
 <p>
   Review customer-submitted photos before they are
   displayed publicly on the website.
+</p>
+
+<p
+  id="photo-notification-status"
+  class="admin-muted"
+  aria-live="polite"
+>
+  Notifications are not enabled.
 </p>
 
 </div>
@@ -415,6 +431,11 @@ Password
 <script
   type="module"
   src="js/admin-photos.js"
+></script>
+
+<script
+  type="module"
+  src="js/fcm-admin.js?v=20260816"
 ></script>
 
 
