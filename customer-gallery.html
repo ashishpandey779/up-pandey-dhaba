@@ -247,26 +247,24 @@
 
 <div class="gallery-upload-cta">
 
-<div>
+  <div>
+    <strong>
+      Share your experience with us
+    </strong>
 
-<strong>
-  Share your experience with us
-</strong>
+    <span>
+      Upload your photo and get a chance to
+      collaborate with us on Instagram.
+    </span>
+  </div>
 
-<span>
-  Upload your photo and get a chance to
-  collaborate with us on Instagram.
-</span>
-
-</div>
-
-
-<a
-  class="btn btn-primary"
-  href="#upload-form"
->
-  📤 Upload Your Photo
-</a>
+  <button
+    id="open-upload-form"
+    class="btn btn-primary"
+    type="button"
+  >
+    📤 Upload Your Photo
+  </button>
 
 </div>
 
@@ -397,211 +395,198 @@
      UPLOAD FORM
      ===================================================== -->
 
-<section
-  id="upload-form"
-  class="section customer-form-section"
->
-
-<div class="container">
-
-
-<div class="customer-form-card">
-
-
-<div class="customer-form-heading">
-
-<p class="eyebrow">
-  SHARE YOUR EXPERIENCE
-</p>
-
-
-<h2>
-  Upload Your Photo
-</h2>
-
-
-<p>
-  Tell us about your visit and give us the
-  opportunity to feature your memory.
-</p>
-
-</div>
-
-
-
-<form
-  id="customer-photo-form"
-  class="customer-photo-form"
->
-
-
-<!-- PHOTO -->
-
-<div class="customer-form-group">
-
-<label for="customer-photo">
-
-Your Photo
-
-<span>*</span>
-
-</label>
-
-
-<input
-  id="customer-photo"
-  name="photo"
-  type="file"
-  accept="image/jpeg,image/png,image/webp"
-  required
->
-
-
-<small>
-  JPG, PNG or WebP • Maximum 10 MB
-</small>
-
+<!-- =====================================================
+     UPLOAD PHOTO MODAL
+     ===================================================== -->
 
 <div
-  id="photo-preview"
-  class="photo-preview"
+  id="upload-modal"
+  class="upload-modal"
   hidden
 >
 
-<img
-  id="photo-preview-image"
-  src=""
-  alt="Selected photo preview"
->
+  <div
+    class="upload-modal-backdrop"
+    data-close-upload
+  ></div>
+
+
+  <section
+    class="customer-form-card upload-modal-card"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="upload-modal-title"
+  >
+
+    <button
+      id="close-upload-form"
+      class="upload-modal-close"
+      type="button"
+      aria-label="Close upload form"
+    >
+      ×
+    </button>
+
+
+    <div class="customer-form-heading">
+
+      <p class="eyebrow">
+        SHARE YOUR EXPERIENCE
+      </p>
+
+      <h2 id="upload-modal-title">
+        Upload Your Photo
+      </h2>
+
+      <p>
+        Tell us about your visit and give us the
+        opportunity to feature your memory.
+      </p>
+
+    </div>
+
+
+    <form
+      id="customer-photo-form"
+      class="customer-photo-form"
+    >
+
+      <!-- PHOTO -->
+
+      <div class="customer-form-group">
+
+        <label for="customer-photo">
+          Your Photo <span>*</span>
+        </label>
+
+        <input
+          id="customer-photo"
+          name="photo"
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          required
+        >
+
+        <small>
+          JPG, PNG or WebP • Maximum 10 MB
+        </small>
+
+
+        <div
+          id="photo-preview"
+          class="photo-preview"
+          hidden
+        >
+
+          <img
+            id="photo-preview-image"
+            src=""
+            alt="Selected photo preview"
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- COMMENT -->
+
+      <div class="customer-form-group">
+
+        <label for="customer-comment">
+          Your Comment <span>*</span>
+        </label>
+
+        <textarea
+          id="customer-comment"
+          name="comment"
+          rows="5"
+          maxlength="500"
+          placeholder="Tell us about your experience..."
+          required
+        ></textarea>
+
+        <small>
+          Maximum 500 characters.
+        </small>
+
+      </div>
+
+
+      <!-- INSTAGRAM -->
+
+      <div class="customer-form-group">
+
+        <label for="customer-instagram">
+          Instagram ID <span>*</span>
+        </label>
+
+        <input
+          id="customer-instagram"
+          name="instagram"
+          type="text"
+          maxlength="100"
+          placeholder="@yourinstagramid"
+          required
+        >
+
+        <small>
+          Required for consideration of an Instagram
+          collaboration post.
+        </small>
+
+      </div>
+
+
+      <!-- CONSENT -->
+
+      <div class="customer-consent">
+
+        <label>
+
+          <input
+            id="customer-consent"
+            name="consent"
+            type="checkbox"
+            required
+          >
+
+          <span>
+            I allow UP Pandey Dhaba & Family Restaurant
+            to review this photo and, if approved, display
+            it on the website and consider it for an
+            Instagram collaboration post.
+          </span>
+
+        </label>
+
+      </div>
+
+
+      <!-- MESSAGE -->
+
+      <p
+        id="upload-message"
+        class="customer-form-message"
+        aria-live="polite"
+      ></p>
+
+
+      <!-- SUBMIT -->
+
+      <button
+        id="customer-submit"
+        class="btn btn-primary customer-submit-button"
+        type="submit"
+      >
+        📤 Submit Photo
+      </button>
+
+    </form>
+
+  </section>
 
 </div>
-
-</div>
-
-
-
-<!-- COMMENT -->
-
-<div class="customer-form-group">
-
-<label for="customer-comment">
-
-Your Comment
-
-<span>*</span>
-
-</label>
-
-
-<textarea
-  id="customer-comment"
-  name="comment"
-  rows="5"
-  maxlength="500"
-  placeholder="Tell us about your experience..."
-  required
-></textarea>
-
-
-<small>
-  Maximum 500 characters.
-</small>
-
-</div>
-
-
-
-<!-- INSTAGRAM -->
-
-<div class="customer-form-group">
-
-<label for="customer-instagram">
-
-Instagram ID
-
-<span>*</span>
-
-</label>
-
-
-<input
-  id="customer-instagram"
-  name="instagram"
-  type="text"
-  maxlength="100"
-  placeholder="@yourinstagramid"
-  required
->
-
-
-<small>
-  Required for consideration of an Instagram
-  collaboration post.
-</small>
-
-</div>
-
-
-
-<!-- CONSENT -->
-
-<div class="customer-consent">
-
-<label>
-
-<input
-  id="customer-consent"
-  name="consent"
-  type="checkbox"
-  required
->
-
-
-<span>
-
-I allow UP Pandey Dhaba & Family Restaurant
-to review this photo and, if approved, display
-it on the website and consider it for an
-Instagram collaboration post.
-
-</span>
-
-</label>
-
-</div>
-
-
-
-<!-- MESSAGE -->
-
-<p
-  id="upload-message"
-  class="customer-form-message"
-  aria-live="polite"
-></p>
-
-
-
-<!-- SUBMIT -->
-
-<button
-  id="customer-submit"
-  class="btn btn-primary customer-submit-button"
-  type="submit"
->
-
-📤 Submit Photo
-
-</button>
-
-
-</form>
-
-</div>
-
-</div>
-
-</section>
 
 
 
@@ -818,6 +803,93 @@ document.addEventListener(
 
           }
         );
+
+      }
+    );
+
+        /* ===============================================
+       UPLOAD PHOTO MODAL
+       =============================================== */
+
+    const uploadModal =
+      document.getElementById(
+        "upload-modal"
+      );
+
+
+    const openUploadButton =
+      document.getElementById(
+        "open-upload-form"
+      );
+
+
+    const closeUploadButton =
+      document.getElementById(
+        "close-upload-form"
+      );
+
+
+    function openUploadModal(){
+
+      if (!uploadModal) return;
+
+      uploadModal.hidden = false;
+
+      document.body.classList.add(
+        "upload-modal-open"
+      );
+
+    }
+
+
+    function closeUploadModal(){
+
+      if (!uploadModal) return;
+
+      uploadModal.hidden = true;
+
+      document.body.classList.remove(
+        "upload-modal-open"
+      );
+
+    }
+
+
+    openUploadButton?.addEventListener(
+      "click",
+      openUploadModal
+    );
+
+
+    closeUploadButton?.addEventListener(
+      "click",
+      closeUploadModal
+    );
+
+
+    uploadModal
+      ?.querySelector(
+        "[data-close-upload]"
+      )
+      ?.addEventListener(
+        "click",
+        closeUploadModal
+      );
+
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape" &&
+          uploadModal &&
+          !uploadModal.hidden
+        ){
+
+          closeUploadModal();
+
+        }
 
       }
     );
