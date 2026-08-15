@@ -1,0 +1,577 @@
+/* =========================================================
+   CUSTOMER PHOTO ADMIN
+   ========================================================= */
+
+.photo-admin-heading{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:25px;
+  margin-bottom:30px;
+}
+
+
+.photo-admin-heading h1{
+  margin:0 0 12px;
+  font-size:clamp(38px,5vw,62px);
+}
+
+
+.photo-admin-heading p:last-child{
+  max-width:760px;
+  margin:0;
+  color:var(--muted);
+}
+
+
+/* =========================================================
+   STATS
+   ========================================================= */
+
+.photo-stats{
+  display:grid;
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+
+  gap:15px;
+
+  margin-bottom:28px;
+}
+
+
+.photo-stat-card{
+  padding:20px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1a0f08,
+      #0e0805
+    );
+}
+
+
+.photo-stat-card span{
+  display:block;
+
+  color:var(--muted);
+
+  font-size:13px;
+
+  margin-bottom:7px;
+}
+
+
+.photo-stat-card strong{
+  display:block;
+
+  color:var(--gold-light);
+
+  font-family:"Roboto Slab",serif;
+
+  font-size:30px;
+}
+
+
+/* =========================================================
+   FILTER
+   ========================================================= */
+
+.photo-filter-bar{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+
+  gap:9px;
+
+  margin-bottom:25px;
+}
+
+
+.photo-filter{
+  border:
+    1px solid rgba(245,173,32,.22);
+
+  background:#120b07;
+
+  color:var(--muted);
+
+  padding:9px 16px;
+
+  border-radius:999px;
+
+  cursor:pointer;
+
+  font:inherit;
+
+  font-size:13px;
+
+  font-weight:700;
+
+  transition:
+    background .2s ease,
+    color .2s ease,
+    border-color .2s ease;
+}
+
+
+.photo-filter:hover{
+  color:var(--gold-light);
+
+  border-color:
+    rgba(245,173,32,.45);
+}
+
+
+.photo-filter.active{
+  color:#160d05;
+
+  background:var(--gold);
+
+  border-color:var(--gold);
+}
+
+
+/* =========================================================
+   PHOTO LIST
+   ========================================================= */
+
+.photo-admin-list{
+  display:grid;
+
+  gap:25px;
+}
+
+
+.photo-admin-card{
+  display:grid;
+
+  grid-template-columns:
+    minmax(260px,430px)
+    1fr;
+
+  overflow:hidden;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1a0f08,
+      #0e0805
+    );
+
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.2);
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.photo-admin-image-wrap{
+  min-height:330px;
+
+  background:#080503;
+}
+
+
+.photo-admin-image-link{
+  display:block;
+
+  width:100%;
+  height:100%;
+}
+
+
+.photo-admin-image{
+  display:block;
+
+  width:100%;
+  height:100%;
+
+  min-height:330px;
+
+  object-fit:cover;
+
+  transition:
+    transform .3s ease;
+}
+
+
+.photo-admin-image-link:hover
+.photo-admin-image{
+  transform:scale(1.025);
+}
+
+
+/* =========================================================
+   DETAILS
+   ========================================================= */
+
+.photo-admin-details{
+  padding:28px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+}
+
+
+.photo-status-row{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:12px;
+
+  margin-bottom:16px;
+}
+
+
+.photo-status{
+  display:inline-flex;
+
+  align-items:center;
+
+  padding:6px 11px;
+
+  border-radius:999px;
+
+  font-size:10px;
+
+  font-weight:800;
+
+  letter-spacing:.8px;
+
+  text-transform:uppercase;
+}
+
+
+.photo-status.pending{
+  color:var(--gold-light);
+
+  border:
+    1px solid rgba(245,173,32,.35);
+
+  background:
+    rgba(245,173,32,.09);
+}
+
+
+.photo-status.approved{
+  color:#b5df88;
+
+  border:
+    1px solid rgba(90,170,75,.4);
+
+  background:
+    rgba(77,148,31,.12);
+}
+
+
+.photo-status.rejected{
+  color:#ffaaa0;
+
+  border:
+    1px solid rgba(230,80,60,.4);
+
+  background:
+    rgba(160,40,25,.12);
+}
+
+
+.photo-date{
+  color:var(--muted);
+
+  font-size:12px;
+
+  text-align:right;
+}
+
+
+.photo-instagram{
+  margin:0 0 14px;
+
+  color:var(--cream);
+
+  font-family:"Roboto Slab",serif;
+
+  font-size:24px;
+}
+
+
+.photo-comment{
+  margin:0 0 20px;
+
+  color:var(--muted);
+
+  line-height:1.7;
+
+  font-size:15px;
+}
+
+
+.photo-meta{
+  display:grid;
+
+  gap:7px;
+
+  margin-bottom:24px;
+
+  color:#a99582;
+
+  font-size:12px;
+}
+
+
+.photo-meta a{
+  color:var(--gold-light);
+
+  font-weight:700;
+}
+
+
+.photo-actions{
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:10px;
+
+  margin-top:auto;
+}
+
+
+.photo-action-btn{
+  min-height:44px;
+}
+
+
+/* =========================================================
+   DELETE BUTTON
+   ========================================================= */
+
+.photo-delete-btn{
+  width:44px;
+  height:44px;
+
+  display:grid;
+  place-items:center;
+
+  margin-left:auto;
+
+  border:
+    1px solid rgba(230,80,60,.4);
+
+  border-radius:10px;
+
+  background:
+    rgba(160,40,25,.08);
+
+  color:#ffaaa0;
+
+  cursor:pointer;
+
+  font-size:18px;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    transform .2s ease;
+}
+
+
+.photo-delete-btn:hover{
+  background:
+    rgba(160,40,25,.2);
+
+  border-color:
+    rgba(230,80,60,.7);
+
+  transform:translateY(-1px);
+}
+
+
+.photo-delete-btn:disabled{
+  opacity:.5;
+
+  cursor:not-allowed;
+
+  transform:none;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.photo-admin-empty{
+  padding:55px 25px;
+
+  text-align:center;
+
+  border:
+    1px dashed var(--line);
+
+  border-radius:20px;
+
+  color:var(--muted);
+}
+
+
+.photo-admin-empty strong{
+  display:block;
+
+  margin-bottom:7px;
+
+  color:var(--cream);
+
+  font-family:"Roboto Slab",serif;
+
+  font-size:18px;
+}
+
+
+.photo-admin-empty span{
+  display:block;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .photo-stats{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+
+  .photo-admin-card{
+    grid-template-columns:1fr;
+  }
+
+
+  .photo-admin-image-wrap{
+    min-height:280px;
+  }
+
+
+  .photo-admin-image{
+    min-height:280px;
+
+    max-height:430px;
+  }
+
+
+  .photo-admin-details{
+    padding:22px;
+  }
+
+}
+
+
+@media(max-width:600px){
+
+  .photo-admin-heading{
+    align-items:stretch;
+
+    flex-direction:column;
+  }
+
+
+  .photo-admin-heading .btn{
+    width:100%;
+  }
+
+
+  .photo-stats{
+    gap:10px;
+  }
+
+
+  .photo-stat-card{
+    padding:16px;
+  }
+
+
+  .photo-stat-card strong{
+    font-size:25px;
+  }
+
+
+  .photo-filter-bar{
+    overflow-x:auto;
+
+    flex-wrap:nowrap;
+
+    padding-bottom:5px;
+  }
+
+
+  .photo-filter{
+    flex:0 0 auto;
+  }
+
+
+  .photo-status-row{
+    align-items:flex-start;
+
+    flex-direction:column;
+  }
+
+
+  .photo-date{
+    text-align:left;
+  }
+
+
+  .photo-instagram{
+    font-size:20px;
+  }
+
+
+  .photo-actions{
+    display:grid;
+
+    grid-template-columns:1fr;
+  }
+
+
+  .photo-action-btn{
+    width:100%;
+  }
+
+
+  .photo-delete-btn{
+    margin-left:0;
+
+    position:absolute;
+
+    top:15px;
+
+    right:15px;
+  }
+
+
+  .photo-admin-card{
+    position:relative;
+  }
+
+}
