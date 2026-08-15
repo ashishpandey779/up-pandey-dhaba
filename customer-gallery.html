@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
+
+<meta
+  name="description"
+  content="Customer photos from UP Pandey Dhaba & Family Restaurant."
+>
+
+<meta
+  name="theme-color"
+  content="#120b07"
+>
+
+<title>
+  Customer Photos | UP Pandey Dhaba
+</title>
+
+<link
+  rel="icon"
+  type="image/png"
+  href="assets/images/logo.png"
+>
+
+<link
+  rel="stylesheet"
+  href="css/style.css"
+>
+
+<link
+  rel="stylesheet"
+  href="css/customer-gallery.css"
+>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="site-header">
+
+<div class="container nav-wrap">
+
+<a
+  class="brand"
+  href="index.html"
+>
+
+<img
+  src="assets/images/logo.png"
+  alt="UP Pandey Dhaba logo"
+>
+
+<span>
+  UP PANDEY DHABA
+</span>
+
+</a>
+
+
+<button
+  class="menu-toggle"
+  aria-label="Open navigation"
+  aria-expanded="false"
+  type="button"
+>
+
+<span></span>
+<span></span>
+<span></span>
+
+</button>
+
+
+<nav class="main-nav">
+
+<a href="index.html">
+  Home
+</a>
+
+<a href="index.html#about">
+  About Us
+</a>
+
+<a href="menu.html">
+  Menu
+</a>
+
+<a
+  class="active"
+  href="customer-gallery.html"
+>
+  Customer Photos
+</a>
+
+<a href="index.html#gallery">
+  Gallery
+</a>
+
+<a href="index.html#reviews">
+  Reviews
+</a>
+
+<a href="index.html#location">
+  Location
+</a>
+
+<a href="index.html#contact">
+  Contact
+</a>
+
+<a
+  class="nav-call"
+  data-phone-link
+  href="#"
+>
+  ☎ Call Now
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<!-- =====================================================
+     PAGE
+     ===================================================== -->
+
+<main class="customer-gallery-page">
+
+
+<!-- HERO -->
+
+<section class="customer-gallery-hero">
+
+<div class="container customer-gallery-hero-inner">
+
+<img
+  class="customer-gallery-logo"
+  src="assets/images/logo.png"
+  alt="UP Pandey Dhaba & Family Restaurant"
+>
+
+<p class="eyebrow">
+  YOUR MEMORIES • OUR FAMILY
+</p>
+
+<h1>
+  Customer Photos
+</h1>
+
+<p>
+  Share your favourite moments from UP Pandey Dhaba
+  with us and our community.
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     UPLOAD CARD
+     ===================================================== -->
+
+<section class="section customer-upload-section">
+
+<div class="container">
+
+
+<div class="section-heading">
+
+<p class="eyebrow">
+  SHARE YOUR EXPERIENCE
+</p>
+
+<h2>
+  Had a Great Time With Us?
+</h2>
+
+<p>
+  Upload your photo and tell us about your experience.
+  Your photo may be featured on our website and Instagram.
+</p>
+
+</div>
+
+
+
+<div class="customer-upload-card">
+
+
+<div class="customer-upload-icon">
+  📸
+</div>
+
+
+<div class="customer-upload-content">
+
+<h2>
+  Share Your Photo
+</h2>
+
+<p>
+  We would love to see your experience at
+  UP Pandey Dhaba.
+</p>
+
+
+<div class="customer-upload-points">
+
+<div>
+  ✓ Upload your favourite photo
+</div>
+
+<div>
+  ✓ Tell us something about your visit
+</div>
+
+<div>
+  ✓ Add your Instagram ID for collaboration
+</div>
+
+<div>
+  ✓ Approved photos may appear within 48 hours
+</div>
+
+</div>
+
+
+<a
+  class="btn btn-primary customer-upload-button"
+  href="#upload-form"
+>
+  📷 Upload Your Photo
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     UPLOAD FORM
+     ===================================================== -->
+
+<section
+  id="upload-form"
+  class="section customer-form-section"
+>
+
+<div class="container">
+
+
+<div class="customer-form-card">
+
+
+<div class="customer-form-heading">
+
+<p class="eyebrow">
+  PHOTO SUBMISSION
+</p>
+
+<h2>
+  Send Us Your Memory
+</h2>
+
+<p>
+  Please provide the details below so our team can
+  review your submission.
+</p>
+
+</div>
+
+
+
+<form
+  id="customer-photo-form"
+  class="customer-photo-form"
+>
+
+
+<!-- PHOTO -->
+
+<div class="customer-form-group">
+
+<label for="customer-photo">
+
+Your Photo
+<span>*</span>
+
+</label>
+
+
+<input
+  id="customer-photo"
+  name="photo"
+  type="file"
+  accept="image/jpeg,image/png,image/webp"
+  required
+>
+
+
+<small>
+  JPG, PNG or WebP • Maximum 10 MB
+</small>
+
+
+<div
+  id="photo-preview"
+  class="photo-preview"
+  hidden
+>
+
+<img
+  id="photo-preview-image"
+  src=""
+  alt="Selected photo preview"
+>
+
+</div>
+
+</div>
+
+
+
+<!-- COMMENT -->
+
+<div class="customer-form-group">
+
+<label for="customer-comment">
+
+Your Comment
+<span>*</span>
+
+</label>
+
+
+<textarea
+  id="customer-comment"
+  name="comment"
+  rows="5"
+  maxlength="500"
+  placeholder="Tell us about your experience..."
+  required
+></textarea>
+
+
+<small>
+  Maximum 500 characters.
+</small>
+
+</div>
+
+
+
+<!-- INSTAGRAM -->
+
+<div class="customer-form-group">
+
+<label for="customer-instagram">
+
+Instagram ID
+<span>*</span>
+
+</label>
+
+
+<input
+  id="customer-instagram"
+  name="instagram"
+  type="text"
+  maxlength="100"
+  placeholder="@yourinstagramid"
+  required
+>
+
+
+<small>
+  Required if you would like us to consider an Instagram
+  collaboration post.
+</small>
+
+</div>
+
+
+
+<!-- EMAIL -->
+
+
+
+<!-- CONSENT -->
+
+<div class="customer-consent">
+
+<label>
+
+<input
+  id="customer-consent"
+  name="consent"
+  type="checkbox"
+  required
+>
+
+<span>
+  I allow UP Pandey Dhaba & Family Restaurant to
+  review this photo and, if approved, display it on
+  the website and consider it for an Instagram
+  collaboration post.
+</span>
+
+</label>
+
+</div>
+
+
+
+<!-- MESSAGE -->
+
+<p
+  id="upload-message"
+  class="customer-form-message"
+  aria-live="polite"
+></p>
+
+
+
+<!-- SUBMIT -->
+
+<button
+  id="customer-submit"
+  class="btn btn-primary customer-submit-button"
+  type="submit"
+>
+
+📤 Submit Photo
+
+</button>
+
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PUBLIC APPROVED PHOTOS
+     ===================================================== -->
+
+<section class="section customer-photos-section">
+
+<div class="container">
+
+
+<div class="section-heading">
+
+<p class="eyebrow">
+  FROM OUR CUSTOMERS
+</p>
+
+<h2>
+  Memories From Our Guests
+</h2>
+
+<p>
+  Photos shared by our customers and approved by
+  the UP Pandey Dhaba team.
+</p>
+
+</div>
+
+
+<div
+  id="customer-photo-grid"
+  class="customer-photo-grid"
+>
+
+<div class="customer-photo-loading">
+
+<span>
+  Loading customer photos...
+</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="site-footer">
+
+<div class="container footer-bottom">
+
+<p>
+  ©
+  <span id="year"></span>
+  UP Pandey Dhaba & Family Restaurant.
+  All rights reserved.
+</p>
+
+</div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     SCRIPTS
+     ===================================================== -->
+
+<script
+  src="js/config.js"
+></script>
+
+
+<script
+  type="module"
+  src="js/customer-gallery.js"
+></script>
+
+
+<script>
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    /* -----------------------------------------------
+       PHONE LINK
+       ----------------------------------------------- */
+
+    if (
+      typeof SITE_CONFIG !== "undefined"
+    ) {
+
+      document
+        .querySelectorAll("[data-phone-link]")
+        .forEach((link) => {
+
+          link.href =
+            `tel:${SITE_CONFIG.phone}`;
+
+        });
+
+    }
+
+
+    /* -----------------------------------------------
+       YEAR
+       ----------------------------------------------- */
+
+    const year =
+      document.getElementById("year");
+
+    if (year) {
+
+      year.textContent =
+        new Date().getFullYear();
+
+    }
+
+
+    /* -----------------------------------------------
+       MOBILE MENU
+       ----------------------------------------------- */
+
+    const toggle =
+      document.querySelector(".menu-toggle");
+
+    const nav =
+      document.querySelector(".main-nav");
+
+
+    toggle?.addEventListener(
+      "click",
+      () => {
+
+        const open =
+          nav.classList.toggle("open");
+
+        toggle.setAttribute(
+          "aria-expanded",
+          String(open)
+        );
+
+      }
+    );
+
+
+    nav
+      ?.querySelectorAll("a")
+      .forEach((link) => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            nav.classList.remove("open");
+
+            toggle?.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+        );
+
+      });
+
+  }
+);
+
+</script>
+
+
+</body>
+
+</html>
