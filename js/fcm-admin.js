@@ -65,7 +65,8 @@ async function registerNotifications(user) {
     // A custom VAPID key can be added later from Firebase Console →
     // Project settings → Cloud Messaging → Web Push certificates.
     const token = await getToken(messaging, {
-      serviceWorkerRegistration: registration
+    vapidKey: "BKKb7WPR6cqZW7NET4TXZNSCqCPvCw__5lhv4UoP_6OutvyhEjtuaJMMSEzNvyCUgbGyC6fAfhVRwCj54Xjm_Rg",
+    serviceWorkerRegistration: registration
     });
 
     if (!token) {
