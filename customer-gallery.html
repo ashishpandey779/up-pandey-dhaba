@@ -895,6 +895,21 @@ document.addEventListener(
     );
 
 
+    /* ===============================================
+       HOMEPAGE UPLOAD CTA
+       =============================================== */
+
+    const uploadRequested =
+      new URLSearchParams(
+        window.location.search
+      ).get("upload") === "1";
+
+
+    if (uploadRequested) {
+      openUploadModal();
+    }
+
+
 
   }
 );
