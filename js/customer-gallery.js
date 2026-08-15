@@ -1,6 +1,11 @@
 import {
-  db
+  db,
+  auth
 } from "./firebase.js";
+
+import {
+  signInAnonymously
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 
 import {
   collection,
@@ -123,6 +128,18 @@ function setSubmitting(
 
 }
 
+
+async function ensureCustomerAuthentication() {
+
+  if (auth.currentUser) {
+    return auth.currentUser;
+  }
+
+  const credential =
+    await signInAnonymously(auth);
+
+  return credential.user;
+}
 
 /* =========================================================
    INSTAGRAM NORMALIZATION
@@ -546,8 +563,12 @@ form?.addEventListener(
          1. Upload image to Cloudinary
          --------------------------------------------- */
 
-      const cloudinaryResult =
-        await uploadToCloudinary(file);
+      const customerUser =
+         await ensureCustomerAuthentication();
+
+
+        const cloudinaryResult =
+            await uploadToCloudinary(file);
 
 
       showMessage(
@@ -561,6 +582,9 @@ form?.addEventListener(
          --------------------------------------------- */
 
       const submission = {
+
+        customerUid:
+            customerUser.uid,
 
         imageUrl:
           cloudinaryResult.imageUrl,
