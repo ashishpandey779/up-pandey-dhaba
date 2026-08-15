@@ -20,6 +20,7 @@ const form = document.getElementById("customer-photo-form");
 const photoInput = document.getElementById("customer-photo");
 const commentInput = document.getElementById("customer-comment");
 const instagramInput = document.getElementById("customer-instagram");
+const contactInput = document.getElementById("customer-contact");
 const consentInput = document.getElementById("customer-consent");
 const submitButton = document.getElementById("customer-submit");
 const message = document.getElementById("upload-message");
@@ -103,6 +104,7 @@ async function createAdminNotification(submission) {
       <p>A customer has submitted a new photo for UP Pandey Dhaba.</p>
       <hr>
       <p><strong>Instagram:</strong> ${escapeHtml(submission.instagramId)}</p>
+      <p><strong>Private collaboration contact:</strong> ${escapeHtml(submission.collaborationContact)}</p>
       <p><strong>Comment:</strong></p>
       <blockquote style="margin:10px 0;padding:12px 16px;border-left:4px solid #d99a1b;background:#f8f3e8;">
         ${escapeHtml(submission.comment)}
@@ -127,101 +129,23 @@ function injectSuccessStyles() {
   const style = document.createElement("style");
   style.id = "upload-success-gift-styles";
   style.textContent = `
-    .upload-success-overlay{
-      position:fixed;
-      inset:0;
-      z-index:9999;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-      background:rgba(5,2,1,.94);
-      backdrop-filter:blur(14px);
-      animation:uploadSuccessFadeIn .25s ease;
-    }
-    .upload-success-card{
-      position:relative;
-      width:min(560px,100%);
-      padding:46px 30px 34px;
-      text-align:center;
-      border:1px solid rgba(245,173,32,.48);
-      border-radius:28px;
-      background:radial-gradient(circle at 50% 0%,rgba(245,173,32,.20),transparent 52%),linear-gradient(145deg,#1c1008,#0d0704);
-      box-shadow:0 30px 100px rgba(0,0,0,.55),0 0 55px rgba(245,173,32,.10);
-      overflow:hidden;
-    }
-    .upload-success-card::before{
-      content:"";
-      position:absolute;
-      width:190px;
-      height:190px;
-      left:50%;
-      top:-105px;
-      transform:translateX(-50%);
-      border-radius:50%;
-      background:rgba(245,173,32,.13);
-      filter:blur(8px);
-    }
-    .upload-success-gift{
-      position:relative;
-      width:112px;
-      height:112px;
-      margin:0 auto 22px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      background:rgba(245,173,32,.10);
-      border:1px solid rgba(245,173,32,.34);
-      font-size:62px;
-      animation:uploadGiftPop .65s cubic-bezier(.2,1.4,.4,1) both;
-    }
-    .upload-success-card h2{
-      position:relative;
-      margin:0 0 12px;
-      color:#fff3d0;
-      font-family:"Roboto Slab",serif;
-      font-size:clamp(30px,6vw,46px);
-      line-height:1.1;
-    }
-    .upload-success-card p{
-      position:relative;
-      margin:0 auto 26px;
-      max-width:440px;
-      color:#cdbfae;
-      line-height:1.7;
-    }
-    .upload-success-okay{
-      position:relative;
-      width:min(300px,100%);
-      min-height:52px;
-      border:0;
-      border-radius:12px;
-      background:#f5ad20;
-      color:#171006;
-      font:inherit;
-      font-weight:800;
-      cursor:pointer;
-      box-shadow:0 12px 28px rgba(245,173,32,.20);
-      transition:transform .2s ease,box-shadow .2s ease;
-    }
-    .upload-success-okay:hover{
-      transform:translateY(-2px);
-      box-shadow:0 16px 34px rgba(245,173,32,.28);
-    }
+    .upload-success-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(5,2,1,.94);backdrop-filter:blur(14px);animation:uploadSuccessFadeIn .25s ease}
+    .upload-success-card{position:relative;width:min(560px,100%);padding:46px 30px 34px;text-align:center;border:1px solid rgba(245,173,32,.48);border-radius:28px;background:radial-gradient(circle at 50% 0%,rgba(245,173,32,.20),transparent 52%),linear-gradient(145deg,#1c1008,#0d0704);box-shadow:0 30px 100px rgba(0,0,0,.55),0 0 55px rgba(245,173,32,.10);overflow:hidden}
+    .upload-success-card::before{content:"";position:absolute;width:190px;height:190px;left:50%;top:-105px;transform:translateX(-50%);border-radius:50%;background:rgba(245,173,32,.13);filter:blur(8px)}
+    .upload-success-gift{position:relative;width:112px;height:112px;margin:0 auto 22px;display:grid;place-items:center;border-radius:50%;background:rgba(245,173,32,.10);border:1px solid rgba(245,173,32,.34);font-size:62px;animation:uploadGiftPop .65s cubic-bezier(.2,1.4,.4,1) both}
+    .upload-success-card h2{position:relative;margin:0 0 12px;color:#fff3d0;font-family:"Roboto Slab",serif;font-size:clamp(30px,6vw,46px);line-height:1.1}
+    .upload-success-card p{position:relative;margin:0 auto 26px;max-width:440px;color:#cdbfae;line-height:1.7}
+    .upload-success-okay{position:relative;width:min(300px,100%);min-height:52px;border:0;border-radius:12px;background:#f5ad20;color:#171006;font:inherit;font-weight:800;cursor:pointer;box-shadow:0 12px 28px rgba(245,173,32,.20);transition:transform .2s ease,box-shadow .2s ease}
+    .upload-success-okay:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(245,173,32,.28)}
     @keyframes uploadSuccessFadeIn{from{opacity:0}to{opacity:1}}
     @keyframes uploadGiftPop{0%{transform:scale(.35) rotate(-12deg);opacity:0}70%{transform:scale(1.08) rotate(3deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
-    @media(max-width:520px){
-      .upload-success-overlay{padding:16px}
-      .upload-success-card{padding:38px 20px 25px;border-radius:23px}
-      .upload-success-gift{width:92px;height:92px;font-size:50px}
-    }
+    @media(max-width:520px){.upload-success-overlay{padding:16px}.upload-success-card{padding:38px 20px 25px;border-radius:23px}.upload-success-gift{width:92px;height:92px;font-size:50px}}
   `;
   document.head.appendChild(style);
 }
 
 function showSuccessOverlay() {
   injectSuccessStyles();
-
   document.getElementById("upload-success-overlay")?.remove();
 
   if (message) {
@@ -268,11 +192,7 @@ function showSuccessOverlay() {
 
 photoInput?.addEventListener("change", () => {
   const file = photoInput.files?.[0];
-
-  if (!file) {
-    if (preview) preview.hidden = true;
-    return;
-  }
+  if (!file) { if (preview) preview.hidden = true; return; }
 
   if (!ALLOWED_TYPES.includes(file.type)) {
     photoInput.value = "";
@@ -306,12 +226,10 @@ form?.addEventListener("submit", async event => {
   }
 
   const file = photoInput.files[0];
-
   if (!ALLOWED_TYPES.includes(file.type)) {
     showMessage("Please select a JPG, PNG or WebP image.", "error");
     return;
   }
-
   if (file.size > MAX_FILE_SIZE) {
     showMessage("The photo must be smaller than 10 MB.", "error");
     return;
@@ -319,19 +237,23 @@ form?.addEventListener("submit", async event => {
 
   const comment = commentInput?.value.trim() || "";
   const instagramId = normalizeInstagramId(instagramInput?.value);
+  const contactDetail = contactInput?.value.trim() || "";
 
   if (!comment) {
     showMessage("Please write something about your visit.", "error");
     commentInput?.focus();
     return;
   }
-
   if (!instagramId) {
     showMessage("Please enter your Instagram ID.", "error");
     instagramInput?.focus();
     return;
   }
-
+  if (!contactDetail) {
+    showMessage("Please enter a WhatsApp number or email address for collaboration contact.", "error");
+    contactInput?.focus();
+    return;
+  }
   if (!consentInput?.checked) {
     showMessage("Please confirm the photo usage permission.", "error");
     return;
@@ -356,6 +278,7 @@ form?.addEventListener("submit", async event => {
       format: cloudinaryResult.format,
       comment,
       instagramId,
+      collaborationContact: contactDetail,
       consent: true,
       status: "pending",
       createdAt: serverTimestamp()
@@ -372,7 +295,6 @@ form?.addEventListener("submit", async event => {
     form.reset();
     if (preview) preview.hidden = true;
     if (previewImage) previewImage.src = "";
-
     showSuccessOverlay();
   } catch (error) {
     console.error("Customer photo submission error:", error);
