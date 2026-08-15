@@ -218,13 +218,24 @@
 </div>
 
 
-<button
-  id="seed-btn"
-  class="btn btn-primary"
-  type="button"
->
-  Initialize Menu
-</button>
+<div class="admin-heading-actions">
+
+  <a
+    href="admin-photos.html"
+    class="btn btn-outline"
+  >
+    Customer Photos
+  </a>
+
+  <button
+    id="seed-btn"
+    class="btn btn-primary"
+    type="button"
+  >
+    Initialize Menu
+  </button>
+
+</div>
 
 </div>
 
@@ -242,6 +253,69 @@
   id="admin-menu"
   class="admin-menu-list"
 ></div>
+
+<!-- =====================================================
+     CUSTOMER PHOTO REVIEW
+     ===================================================== -->
+
+<section class="customer-review-section">
+
+  <div class="customer-review-heading">
+
+    <div>
+
+      <p class="eyebrow">
+        CUSTOMER CONTENT
+      </p>
+
+      <h2>
+        Photo Review
+      </h2>
+
+      <p>
+        Review customer submissions before they appear
+        on the public website.
+      </p>
+
+    </div>
+
+    <span
+      id="customer-review-count"
+      class="customer-review-count"
+    >
+      0 pending
+    </span>
+
+  </div>
+
+
+  <div
+    id="customer-review-message"
+    class="admin-alert"
+    hidden
+  ></div>
+
+
+  <div
+    id="customer-review-list"
+    class="customer-review-list"
+  >
+
+    <div class="customer-review-empty">
+
+      <strong>
+        Loading customer submissions...
+      </strong>
+
+      <span>
+        Please wait.
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
 
 
 </div>
@@ -390,6 +464,11 @@ Category
 <script
   type="module"
   src="js/admin.js"
+></script>
+
+<script
+  type="module"
+  src="js/customer-review.js"
 ></script>
 
 </body>

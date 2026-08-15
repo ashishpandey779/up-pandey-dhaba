@@ -1207,3 +1207,23 @@
   }
 
 }
+.admin-heading-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+
+@media(max-width:720px){
+
+  .admin-heading-actions{
+    width:100%;
+    flex-direction:column;
+  }
+
+  .admin-heading-actions .btn{
+    width:100%;
+  }
+
+}
