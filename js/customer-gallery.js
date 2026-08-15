@@ -20,6 +20,7 @@ const form = document.getElementById("customer-photo-form");
 const photoInput = document.getElementById("customer-photo");
 const commentInput = document.getElementById("customer-comment");
 const instagramInput = document.getElementById("customer-instagram");
+const contactInput = document.getElementById("customer-contact");
 const consentInput = document.getElementById("customer-consent");
 const submitButton = document.getElementById("customer-submit");
 const message = document.getElementById("upload-message");
@@ -95,7 +96,7 @@ async function uploadToCloudinary(file) {
   };
 }
 
-async function createAdminNotification(submission) {
+async function createAdminNotification(submission, collaborationContact) {
   const subject = "📸 New Customer Photo Uploaded — UP Pandey Dhaba";
   const html = `
     <div style="font-family:Arial,sans-serif;max-width:650px;margin:auto;color:#222;">
@@ -103,6 +104,7 @@ async function createAdminNotification(submission) {
       <p>A customer has submitted a new photo for UP Pandey Dhaba.</p>
       <hr>
       <p><strong>Instagram:</strong> ${escapeHtml(submission.instagramId)}</p>
+      <p><strong>Private collaboration contact:</strong> ${escapeHtml(collaborationContact)}</p>
       <p><strong>Comment:</strong></p>
       <blockquote style="margin:10px 0;padding:12px 16px;border-left:4px solid #d99a1b;background:#f8f3e8;">
         ${escapeHtml(submission.comment)}
@@ -319,6 +321,7 @@ form?.addEventListener("submit", async event => {
 
   const comment = commentInput?.value.trim() || "";
   const instagramId = normalizeInstagramId(instagramInput?.value);
+  const contactDetail = contactInput?.value.trim() || "";
 
   if (!comment) {
     showMessage("Please write something about your visit.", "error");
@@ -329,6 +332,12 @@ form?.addEventListener("submit", async event => {
   if (!instagramId) {
     showMessage("Please enter your Instagram ID.", "error");
     instagramInput?.focus();
+    return;
+  }
+
+  if (!contactDetail) {
+    showMessage("Please enter a WhatsApp number or email address for collaboration contact.", "error");
+    contactInput?.focus();
     return;
   }
 
@@ -364,7 +373,10 @@ form?.addEventListener("submit", async event => {
     const submissionRef = await addDoc(collection(db, "customerPhotos"), submission);
 
     try {
-      await createAdminNotification({ ...submission, submissionId: submissionRef.id });
+      await createAdminNotification(
+        { ...submission, submissionId: submissionRef.id },
+        contactDetail
+      );
     } catch (notificationError) {
       console.error("Admin notification error:", notificationError);
     }
