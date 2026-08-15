@@ -726,29 +726,37 @@ async function loadApprovedPhotos() {
 
     const photosQuery =
       query(
-        collection(
-          db,
+       collection(
+         db,
           "customerPhotos"
-        ),
-
-        where(
+       ),
+       where(
           "status",
           "==",
           "approved"
-        ),
-
-        orderBy(
-          "approvedAt",
-          "desc"
-        )
-      );
-
+       )
+     );
 
     const snapshot =
       await getDocs(
         photosQuery
       );
+    const approvedPhotos =
+  snapshot.docs
+    .map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }))
+    .sort((a, b) => {
 
+      const aTime =
+        a.approvedAt?.toMillis?.() || 0;
+
+      const bTime =
+        b.approvedAt?.toMillis?.() || 0;
+
+      return bTime - aTime;
+    });
 
     if (
       snapshot.empty
