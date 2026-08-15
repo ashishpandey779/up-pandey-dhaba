@@ -1,0 +1,101 @@
+/* =========================================================
+   HOMEPAGE CUSTOMER PHOTO CTA
+   ========================================================= */
+
+.share-experience {
+  padding-top: 34px;
+  padding-bottom: 34px;
+  background: var(--bg);
+}
+
+.share-experience-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  overflow: hidden;
+  padding: 28px 34px;
+  border: 1px solid rgba(245, 173, 32, .34);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(245, 173, 32, .13), transparent 42%),
+    linear-gradient(135deg, #1a0f08, #0e0805);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .24);
+  isolation: isolate;
+}
+
+.share-experience-card::before {
+  content: "";
+  position: absolute;
+  top: -55%;
+  left: -70%;
+  width: 32%;
+  height: 210%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.05), rgba(255,255,255,.20), rgba(255,255,255,.05), transparent);
+  transform: rotate(18deg);
+  pointer-events: none;
+  z-index: 0;
+  animation: shareExperienceShine 6s ease-in-out infinite;
+}
+
+.share-experience-copy,
+.share-experience-button {
+  position: relative;
+  z-index: 1;
+}
+
+.share-experience-copy {
+  min-width: 0;
+}
+
+.share-experience-copy .eyebrow {
+  margin-bottom: 7px;
+}
+
+.share-experience-copy h2 {
+  margin: 0 0 8px;
+  color: var(--cream);
+  font-size: clamp(28px, 3.5vw, 42px);
+}
+
+.share-experience-copy p:last-child {
+  margin: 0;
+  max-width: 680px;
+  color: var(--muted);
+}
+
+.share-experience-button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+@keyframes shareExperienceShine {
+  0%, 60%, 100% { left: -70%; opacity: 0; }
+  64% { opacity: 1; }
+  82% { left: 135%; opacity: 1; }
+  86% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .share-experience-card::before { animation: none; }
+}
+
+@media (max-width: 720px) {
+  .share-experience {
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+
+  .share-experience-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 26px 20px;
+    text-align: center;
+  }
+
+  .share-experience-button {
+    width: 100%;
+  }
+}
