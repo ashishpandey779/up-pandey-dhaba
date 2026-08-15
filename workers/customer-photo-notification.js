@@ -1,4 +1,5 @@
 const ALLOWED_ORIGINS = new Set([
+  "https://ashishpandey779.github.io",
   "https://uppandeydhaba.com",
   "https://www.uppandeydhaba.com"
 ]);
@@ -15,7 +16,8 @@ function jsonResponse(body, status, request) {
       "Content-Type": "application/json; charset=UTF-8",
       "Access-Control-Allow-Origin": getCorsOrigin(request),
       "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type"
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Vary": "Origin"
     }
   });
 }
