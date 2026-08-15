@@ -1,3 +1,4 @@
 name = "up-pandey-photo-notifications"
-main = "worker/src/index.js"
+main = "workers/customer-photo-notification.js"
 compatibility_date = "2026-08-16"
+workers_dev = true
