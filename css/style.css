@@ -717,3 +717,230 @@ h1 strong { display: block; color: var(--gold); }
   }
 
 }
+
+/* =========================================================
+   HOMEPAGE CUSTOMER PHOTO UPLOAD CTA
+   ========================================================= */
+
+.home-upload-cta{
+  width:min(920px,calc(100% - 40px));
+
+  margin:0 auto 60px;
+
+  padding:20px 24px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:24px;
+
+  border:1px solid rgba(245,173,32,.30);
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(245,173,32,.10),
+      rgba(30,15,7,.92)
+    );
+
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.25);
+
+  position:relative;
+  overflow:hidden;
+}
+
+
+.home-upload-cta::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:-100%;
+
+  width:70%;
+  height:100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.08),
+      transparent
+    );
+
+  transform:skewX(-20deg);
+
+  animation:
+    homeUploadShine 4s ease-in-out infinite;
+}
+
+
+@keyframes homeUploadShine{
+
+  0%{
+    left:-100%;
+  }
+
+  35%{
+    left:130%;
+  }
+
+  100%{
+    left:130%;
+  }
+
+}
+
+
+.home-upload-content{
+  position:relative;
+  z-index:1;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:4px;
+}
+
+
+.home-upload-eyebrow{
+  color:var(--gold);
+
+  font-family:"Roboto Slab",serif;
+
+  font-size:12px;
+
+  font-weight:800;
+
+  letter-spacing:1.4px;
+}
+
+
+.home-upload-content strong{
+  color:var(--cream);
+
+  font-family:"Roboto Slab",serif;
+
+  font-size:20px;
+
+  line-height:1.25;
+}
+
+
+.home-upload-description{
+  color:var(--muted);
+
+  font-size:13px;
+
+  line-height:1.5;
+}
+
+
+.home-upload-button{
+  position:relative;
+  z-index:1;
+
+  flex:0 0 auto;
+
+  border:0;
+
+  border-radius:11px;
+
+  padding:12px 19px;
+
+  background:var(--gold);
+
+  color:#160d05;
+
+  font:inherit;
+
+  font-size:13px;
+
+  font-weight:800;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 8px 22px rgba(245,173,32,.18);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+}
+
+
+.home-upload-button:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 12px 28px rgba(245,173,32,.28);
+
+  background:var(--gold-light);
+}
+
+
+.home-upload-button:active{
+  transform:translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:720px){
+
+  .home-upload-cta{
+    width:calc(100% - 28px);
+
+    margin-bottom:55px;
+
+    padding:18px;
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+    text-align:center;
+
+    gap:12px;
+
+    border-radius:16px;
+  }
+
+
+  .home-upload-content{
+    align-items:center;
+  }
+
+
+  .home-upload-eyebrow{
+    font-size:10px;
+  }
+
+
+  .home-upload-content strong{
+    font-size:17px;
+  }
+
+
+  .home-upload-description{
+    font-size:12px;
+  }
+
+
+  .home-upload-button{
+    width:100%;
+
+    padding:11px 15px;
+
+    font-size:13px;
+  }
+
+}

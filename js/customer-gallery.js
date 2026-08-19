@@ -398,9 +398,133 @@ async function loadApprovedPhotos() {
   if (!photoGrid) return;
 
   try {
+<<<<<<< ours
     const photosQuery = query(
       collection(db, "customerPhotos"),
       where("status", "==", "approved")
+=======
+
+    const photosQuery =
+      query(
+       collection(
+         db,
+          "customerPhotos"
+       ),
+       where(
+          "status",
+          "==",
+          "approved"
+       )
+     );
+
+    const snapshot =
+      await getDocs(
+        photosQuery
+      );
+    const approvedPhotos =
+  snapshot.docs
+    .map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }))
+    .sort((a, b) => {
+
+      const aTime =
+        a.approvedAt?.toMillis?.() || 0;
+
+      const bTime =
+        b.approvedAt?.toMillis?.() || 0;
+
+      return bTime - aTime;
+    });
+
+    if (
+      snapshot.empty
+    ) {
+
+      photoGrid.innerHTML =
+        `
+          <div class="customer-photo-empty">
+
+            <strong>
+              No customer photos yet.
+            </strong>
+
+            <span>
+              Be the first to share your experience!
+            </span>
+
+          </div>
+        `;
+
+      return;
+    }
+
+
+    photoGrid.innerHTML =
+      approvedPhotos
+        .map(
+          (photo) => {
+
+            const photo =
+              doc.data();
+
+
+            return `
+              <article
+                class="customer-photo-card"
+              >
+
+                <a
+                  href="${escapeHtml(photo.imageUrl)}"
+                  target="_blank"
+                  rel="noopener"
+                >
+
+                  <img
+                    class="customer-photo-card-image"
+                    src="${escapeHtml(photo.imageUrl)}"
+                    alt="Customer photo from UP Pandey Dhaba"
+                    loading="lazy"
+                  >
+
+                </a>
+
+
+                <div
+                  class="customer-photo-card-content"
+                >
+
+                  <p
+                    class="customer-photo-card-comment"
+                  >
+                    ${escapeHtml(photo.comment)}
+                  </p>
+
+                  <div
+                    class="customer-photo-card-instagram"
+                  >
+                    ${escapeHtml(photo.instagramId)}
+                  </div>
+
+                </div>
+
+              </article>
+            `;
+
+          }
+        )
+        .join("");
+
+
+  } catch (
+    error
+  ) {
+
+    console.error(
+      "Unable to load approved customer photos:",
+      error
+>>>>>>> theirs
     );
 
     const snapshot = await getDocs(photosQuery);
